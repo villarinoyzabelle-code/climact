@@ -1,0 +1,299 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>KLIMATA | CLIMACT</title>
+    <!-- Tailwind CSS CDN -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <style>
+        /* Custom styles for the slow spinning globe animation */
+        .animate-spin-slow {
+            animation: spin 8s linear infinite;
+        }
+        @keyframes spin {
+            from {
+                transform: rotate(0deg);
+            }
+            to {
+                transform: rotate(360deg);
+            }
+        }
+        /* Style to hide sections by default */
+        .hidden {
+            display: none;
+        }
+    </style>
+</head>
+<body class="bg-gradient-to-br from-green-500 to-blue-600 text-white font-sans min-h-screen flex flex-col">
+
+    <!-- Header and Navigation -->
+    <header class="sticky top-0 z-50 bg-white/10 backdrop-blur-md shadow-lg rounded-b-3xl">
+        <nav class="container mx-auto px-6 py-4 flex items-center justify-between">
+            <div class="flex items-center space-x-2">
+                <!-- Replaced the SVG icon and text with a single image. -->
+                <!-- The image is wrapped in a link to serve as the home button. -->
+                <a href="#home" class="flex items-center nav-link">
+                    <img src="https://lh3.googleusercontent.com/d/1aS9fsXtWCyiahFwtMbfjHdBEgZ72WlS-" 
+                         alt="KLIMATA Logo"
+                         class="h-12">
+                </a>
+            </div>
+            <div class="hidden md:flex space-x-8 text-lg font-medium">
+                <a href="#home" class="nav-link text-white hover:text-green-200 transition-colors duration-300">Home</a>
+                <a href="#crisis" class="nav-link text-white hover:text-green-200 transition-colors duration-300">Crisis</a>
+                <a href="#survival" class="nav-link text-white hover:text-green-200 transition-colors duration-300">Survival & Adaptation</a>
+                <a href="#virtual-earth" class="nav-link text-white hover:text-green-200 transition-colors duration-300">Virtual Earth</a>
+            </div>
+            <!-- Mobile Menu Button - a more complex multi-page site would require a separate js for this -->
+            <button class="md:hidden text-white focus:outline-none">
+                <svg xmlns="http://www.w3.org/2000/svg" class="h-8 w-8" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16m-7 6h7" />
+                </svg>
+            </button>
+        </nav>
+    </header>
+
+    <!-- Main Content Area with all pages -->
+    <main class="flex-grow">
+        <!-- ======================================================== -->
+        <!--  HOME PAGE SECTION - Now a single container for all home content -->
+        <!-- ======================================================== -->
+        <section id="home-page" class="page-section">
+            <!-- Full-width banner section with the image background -->
+            <section id="full-width-banner" class="relative h-screen overflow-hidden">
+                <!-- Background image div positioned absolutely to cover the entire section -->
+                <!-- The filter: blur() has been added here -->
+                <div class="absolute inset-0 bg-cover bg-center bg-no-repeat transform scale-110"
+                    style="background-image: url('https://png.pngtree.com/thumb_back/fh260/background/20250325/pngtree-a-serene-landscape-depicting-lush-green-hills-vibrant-trees-gentle-river-image_17139218.jpg'); filter: blur(5px);">
+                </div>
+                <!-- Semi-transparent overlay to improve text readability -->
+                <div class="absolute inset-0 bg-black/60"></div>
+                <!-- The content is now centered on top of the full-width image and overlay -->
+                <div class="relative z-10 flex flex-col items-center justify-center text-center py-24 md:py-32 space-y-8 h-full">
+                    <h2 class="text-xl md:text-2xl font-bold tracking-widest text-gray-100">SIMULATE. SURVIVE. SUSTAIN.</h2>
+                    <!-- The text color for CLIMACT is white and the font weight is extrabold, as requested -->
+                    <h1 class="text-6xl sm:text-7xl md:text-9xl font-extrabold text-white leading-tight">
+                        CLIMACT
+                    </h1>
+                    <em>
+                        <p class="text-xl md:text-2xl text-gray-200 max-w-3xl">
+                            The world is dying, our future is fading—but we are not hopeless.
+                            <br> It's time to CLIMACT.
+                        </p>
+                    </em>
+                </div>
+            </section>
+            
+            <!-- GOALS SECTION - Now inside the home-page container -->
+            <div class="container mx-auto px-6 mt-12 mb-16">
+                <div class="text-center py-12">
+                    <h2 class="text-4xl md:text-8xl font-bold">GOALS</h2>
+                    <p class="text-xl text-gray-200 mb-12 max-w-3xl mx-auto">
+                        What are the aims of this project?
+                    </p>
+                </div>
+                <div class="grid grid-cols-1 sm:grid-cols-2 gap-8 max-w-4xl mx-auto">
+                    <!-- Card 1: Awareness -->
+                    <div class="bg-white/10 p-8 rounded-2xl shadow-xl text-center border-2 border-white/30 hover:border-white transition-colors duration-300">
+                        <div class="flex items-center justify-center text-white mb-6"></div>
+                        <h3 class="text-2xl font-bold mb-3">Raise climate awareness <br> across all age groups</h3>
+                        <p class="text-gray-200 leading-relaxed">Provides educational content for children, youth, and adults to foster a shared understanding of climate issues.</p>
+                    </div>
+
+                    <!-- Card 2: Literacy -->
+                    <div class="bg-white/10 p-8 rounded-2xl shadow-xl text-center border-2 border-white/30 hover:border-white transition-colors duration-300">
+                        <div class="flex items-center justify-center text-white mb-6"></div>
+                        <h3 class="text-2xl font-bold mb-3">Promote Local Climate Literacy</h3>
+                        <p class="text-gray-200 leading-relaxed">Equip students with vital climate knowledge through micro-lessons that tackle real-life Southeast Asian environmental challenges.</p>
+                    </div>
+
+                    <!-- Card 3: Empowerment -->
+                    <div class="bg-white/10 p-8 rounded-2xl shadow-xl text-center border-2 border-white/30 hover:border-white transition-colors duration-300">
+                        <div class="flex items-center justify-center text-white mb-6"></div>
+                        <h3 class="text-2xl font-bold mb-3">Empower individuals to <br> advocate for climate action</h3>
+                        <p class="text-gray-200 leading-relaxed">Equip users with practical knowledge, communication tools, and real-world guidance to become effective climate advocates.</p>
+                    </div>
+
+                    <!-- Card 4: Real-world -->
+                    <div class="bg-white/10 p-8 rounded-2xl shadow-xl text-center border-2 border-white/30 hover:border-white transition-colors duration-300">
+                        <div class="flex items-center justify-center text-white mb-6"></div>
+                        <h3 class="text-2xl font-bold mb-3">Bridge scientific knowledge with practical, <br>real-world responses</h3>
+                        <p class="text-gray-200 leading-relaxed">Going beyond theory, the platform equips users with survival strategies and local adaptation tips to face climate threats head-on.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Crisis Page Section -->
+        <section id="crisis-page" class="page-section hidden">
+            <div class="text-center py-12">
+                <h2 class="text-4xl md:text-5xl font-bold mb-12">Climate Crisis in Our Region</h2>
+                <p class="text-xl text-gray-200 mb-12 max-w-3xl mx-auto">
+                    Understand the pressing environmental issues affecting Southeast Asia and the cause-and-effect relationships behind them.
+                </p>
+                <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 max-w-6xl mx-auto">
+                    <!-- Card 1: Malaysia -->
+                    <div class="bg-white/10 p-8 rounded-2xl shadow-xl text-center border-2 border-white/30 hover:border-white transition-colors duration-300">
+                        <div class="flex items-center justify-center text-white mb-6"></div>
+                        <h3 class="text-2xl font-bold mb-3">MALAYSIA</h3>
+                        <h2 class="text-gray-xl font-bold mb-3">Extreme Heat</h2>
+                        <p class="text-gray-200 leading-relaxed">Causes: <br> Greenhouse Gas Emissions, <br> High Humidity</p>
+                        <h2 class="text-gray-xl font-bold mb-3"><br>CLIMACT!</h2>
+                        <p class="text-gray-200 leading-relaxed">Reduce your carbon footprint. <br> Go green. <br> Support renewable energy.</p>
+                    </div>
+                    <!-- Card 2: Philippines -->
+                    <div class="bg-white/10 p-8 rounded-2xl shadow-xl text-center border-2 border-white/30 hover:border-white transition-colors duration-300">
+                        <div class="flex items-center justify-center text-white mb-6"></div>
+                        <h3 class="text-2xl font-bold mb-3">PHILIPPINES</h3>
+                        <h2 class="text-gray-xl font-bold mb-3">Flooding</h2>
+                        <p class="text-gray-200 leading-relaxed">Causes: <br> Deforestation, Poor Drainage</p>
+                        <h2 class="text-gray-xl font-bold mb-3"><br>CLIMACT!</h2>
+                        <p class="text-gray-200 leading-relaxed">Plant more trees. <br> Practice proper waste management. <br> Improve drainages.</p>
+                    </div>
+                    <!-- Card 3: Laos -->
+                    <div class="bg-white/10 p-8 rounded-2xl shadow-xl text-center border-2 border-white/30 hover:border-white transition-colors duration-300">
+                        <div class="flex items-center justify-center text-white mb-6"></div>
+                        <h3 class="text-2xl font-bold mb-3">LAOS</h3>
+                        <h2 class="text-gray-xl font-bold mb-3">Water Shortage</h2>
+                        <p class="text-gray-200 leading-relaxed">Causes: <br> Population Growth, <br> Unsustainable agriculture and irrigation.</p>
+                        <h2 class="text-gray-xl font-bold mb-3"><br>CLIMACT!</h2>
+                        <p class="text-gray-200 leading-relaxed">Practice water conservation. <br> Regulate water use. <br> Adopt efficient irrigation techniques.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Survival & Adaptation Page Section -->
+        <section id="survival-page" class="page-section hidden">
+            <div class="text-center py-12">
+                <h2 class="text-4xl md:text-5xl font-bold mb-12">Survival & Adaptation Strategies</h2>
+                <p class="text-xl text-gray-200 mb-12 max-w-3xl mx-auto">
+                    Bridge scientific knowledge with practical, real-world guidance to prepare for and respond to climate-related threats.
+                </p>
+                <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 max-w-6xl mx-auto">
+                    <!-- Card 1: Basic Life Support -->
+                    <div class="bg-white/10 p-4 rounded-2xl shadow-xl text-center border-2 border-white/30 hover:border-white transition-colors duration-300">
+                        <!-- Responsive video container -->
+                        <div class="aspect-w-16 aspect-h-9 w-full rounded-xl overflow-hidden mb-4">
+                            <!-- Embedded YouTube video for Basic Life Support -->
+                            <iframe 
+                                class="w-full h-full" 
+                                src="https://www.youtube.com/embed/Plse2FOkV4Q" 
+                                title="How to perform CPR - A Step-by-Step Guide" 
+                                frameborder="0" 
+                                allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" 
+                                allowfullscreen>
+                            </iframe>
+                        </div>
+                        <!-- Card Text Content -->
+                        <h3 class="text-2xl font-bold mb-3">Basic Life Support</h3>
+                        <p class="text-gray-200 leading-relaxed">Learn essential first aid and CPR techniques for emergencies, including those caused by extreme weather.</p>
+                    </div>
+                    <!-- Card 2: Flood Preparedness -->
+                    <div class="bg-white/10 p-4 rounded-2xl shadow-xl text-center border-2 border-white/30 hover:border-white transition-colors duration-300">
+                        <!-- Responsive video container -->
+                        <div class="aspect-w-16 aspect-h-9 w-full rounded-xl overflow-hidden mb-4">
+                            <!-- Embedded YouTube video for Flood Preparedness -->
+                            <iframe 
+                                class="w-full h-full" 
+                                src="https://www.youtube.com/embed/uIVk_VSPNR4" 
+                                title="How to Prepare for, Survive, and Stay Informed About Flooding" 
+                                frameborder="0" 
+                                allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" 
+                                allowfullscreen>
+                            </iframe>
+                        </div>
+                        <!-- Card Text Content -->
+                        <h3 class="text-2xl font-bold mb-3">Flood Preparedness</h3>
+                        <p class="text-gray-200 leading-relaxed">Practical guidance on creating emergency kits, securing your home, and staying safe during and after floods.</p>
+                    </div>
+                    <!-- Card 3: Heat Safety -->
+                    <div class="bg-white/10 p-4 rounded-2xl shadow-xl text-center border-2 border-white/30 hover:border-white transition-colors duration-300">
+                        <!-- Responsive video container -->
+                        <div class="aspect-w-16 aspect-h-9 w-full rounded-xl overflow-hidden mb-4">
+                            <!-- Embedded YouTube video for Heat Safety -->
+                            <iframe 
+                                class="w-full h-full" 
+                                src="https://www.youtube.com/embed/kuGqzVgPTso" 
+                                title="Heat Stress Safety: How to Prevent Heat-Related Illnesses at Work" 
+                                frameborder="0" 
+                                allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" 
+                                allowfullscreen>
+                            </iframe>
+                        </div>
+                        <!-- Card Text Content -->
+                        <h3 class="text-2xl font-bold mb-3">Heat Stress & Water Safety</h3>
+                        <p class="text-gray-200 leading-relaxed">Essential tips for preventing heatstroke and managing water resources during droughts and extreme heat.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Virtual Earth Page Section -->
+        <section id="virtual-earth-page" class="page-section hidden">
+            <div class="flex flex-col items-center py-12 text-center">
+                <h2 class="text-4xl md:text-5xl font-bold mb-8">Virtual Earth</h2>
+                <p class="text-xl text-gray-200 mb-8 max-w-3xl mx-auto">
+                    A digital representation of our planet where you can simulate climate scenarios and test your knowledge through interactive quizzes.
+                </p>
+                <div class="w-48 h-48 md:w-64 md:h-64 flex items-center justify-center p-8 bg-white/10 rounded-full border-4 border-white/30 shadow-2xl">
+                    <!-- Globe Icon SVG -->
+                    <svg xmlns="http://www.w3.org/2000/svg" width="128" height="128" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="text-white animate-spin-slow"><circle cx="12" cy="12" r="10"></circle><path d="M12 2a15.3 15.3 0 0 1 4 10a15.3 15.3 0 0 1-4 10a15.3 15.3 0 0 1-4-10a15.3 15.3 0 0 1 4-10z"></path></svg>
+                </div>
+                <p class="text-lg text-gray-300 mt-8">
+                    (Concept: Imagine a dynamic globe where you can explore regional climate data, see the effects of rising sea levels on coastal cities, and take quizzes to test your understanding of climate threats.)
+                </p>
+            </div>
+        </section>
+
+    </main>
+
+    <!-- Footer -->
+    <footer class="bg-white/10 backdrop-blur-md py-8 rounded-t-3xl mt-auto">
+        <div class="container mx-auto px-6 text-center text-gray-200">
+            <p>&copy; 2025 Climact. All rights reserved.</p>
+        </div>
+    </footer>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            const navLinks = document.querySelectorAll('.nav-link');
+            const sections = document.querySelectorAll('.page-section');
+
+            // Function to show a specific page and hide others
+            const showPage = (pageId) => {
+                sections.forEach(section => {
+                    section.classList.add('hidden');
+                });
+                const targetSection = document.getElementById(pageId);
+                if (targetSection) {
+                    targetSection.classList.remove('hidden');
+                }
+            };
+
+            // Event listener for navigation links
+            navLinks.forEach(link => {
+                link.addEventListener('click', (event) => {
+                    event.preventDefault(); // Prevent the browser from trying to navigate
+                    const targetId = link.getAttribute('href').substring(1) + '-page';
+                    showPage(targetId);
+                });
+            });
+
+            // Handle initial page load, check for URL hash
+            const initialHash = window.location.hash;
+            if (initialHash) {
+                const targetId = initialHash.substring(1) + '-page';
+                if (document.getElementById(targetId)) {
+                    showPage(targetId);
+                } else {
+                    showPage('home-page');
+                }
+            } else {
+                showPage('home-page');
+            }
+        });
+    </script>
+</body>
+</html>
