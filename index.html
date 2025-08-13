@@ -40,7 +40,7 @@
         .reveal-section {
             position: relative;
             height: 50vh;
-            background-image: url(https://lh3.googleusercontent.com/d/19wgeaEpyYvSdri4xtUh32JBtYHJlcQ61);
+            background-image: url(https://lh3.googleusercontent.com/d/1yEvFkSipLpHfgdhe51lwJpS1JgY7C7OJ);
             filter: blur(0px);
             background-size: cover;
             background-position: center;
@@ -183,8 +183,8 @@
             <div class="flex items-center space-x-2">
                 <a href="#home" class="flex items-center nav-link">
                     <img src="https://lh3.googleusercontent.com/d/1RoqXsweePfF8CxFQSY9ElmAM7BS9JpTr"
-                                 alt="KLIMATA Logo"
-                                 class="h-12">
+                                    alt="KLIMATA Logo"
+                                    class="h-12">
                 </a>
             </div>
             <div class="hidden md:flex space-x-8 text-lg font-medium">
@@ -202,10 +202,10 @@
         </nav>
     </header>
 
-    <!-- Main Content Area with all pages -->
+<!-- Main Content Area with all pages -->
     <main class="flex-grow">
         <!-- ======================================================== -->
-        <!--  HOME PAGE SECTION - Now a single container for all home content -->
+        <!-- HOME PAGE SECTION - Now a single container for all home content -->
         <!-- ======================================================== -->
         <section id="home-page" class="page-section">
             <!-- Full-width banner section with the image background -->
@@ -216,17 +216,171 @@
                 <!-- Semi-transparent overlay to improve text readability -->
                 <div class="absolute inset-0 bg-black/60"></div>
                 <!-- The content is now centered on top of the full-width image and overlay -->
-                <div class="relative z-10 flex flex-col items-center justify-center text-center py-24 md:py-32 space-y-8 h-full">
-                    <h2 class="text-xl md:text-2xl font-bold tracking-widest text-gray-100">SIMULATE. SURVIVE. SUSTAIN.</h2>
-                    <h1 class="text-6xl sm:text-7xl md:text-9xl font-extrabold text-white leading-tight">
-                        CLIMACT
-                    </h1>
-                    <em>
-                        <p class="text-xl md:text-2xl text-gray-200 max-w-3xl">
-                            The world is dying, our future is fading—but we are not hopeless.
-                            <br> It's time to CLIMACT.
-                        </p>
-                    </em>
+                <div class="relative z-10 flex flex-col md:flex-row items-start justify-between p-8 space-y-8 md:space-y-0 md:space-x-8 h-full">
+                    <!-- CLIMACT Text Section -->
+                    <div class="flex flex-col items-left justify-center text-left py-24 px-32 md:py-32 space-y-8 md:w-2/3">
+                        <br> <br> <br> <br> <br> <br>
+                        <h2 class="text-xl md:text-2xl font-bold tracking-widest text-gray-100">SIMULATE. SURVIVE. SUSTAIN.</h2>
+                        <h1 class="text-6xl sm:text-7xl md:text-9xl font-extrabold text-white leading-tight">
+                            CLIMACT
+                        </h1>
+                        <em>
+                            <p class="text-xl md:text-2xl text-gray-200 max-w-3xl">
+                                The world is dying, our future is fading—
+                                <br> but we are not hopeless.
+                                <br> <strong> It's time to CLIMACT. </strong>
+                            </p>
+                        </em>
+                    </div>
+
+                    <!-- Main container for the right-hand sidebar content -->
+                    <div id="right-sidebar-content" class="flex flex-col space-y-6 w-auto md:h-full">
+                        
+                        <!-- Google Weather Cards Section (now a separate, self-contained block) -->
+                        <div id="google-weather-section" class="bg-white/10 backdrop-blur-md rounded-xl shadow-lg p-6 custom-scroll overflow-y-auto max-h-[55vh]">
+                            <!-- Main Header with Google styling and new space for website info -->
+                            <div class="p-2 mb-4 flex flex-col sm:flex-row items-center justify-between">
+                                <div class="flex items-center space-x-4 mb-2 sm:mb-0">
+                                    <div class="flex flex-col items-center justify-center text-sm text-gray-400">
+                                        <p class="text-xs">Powered by</p>
+                                        <p class="font-bold">Google</p>
+                                    </div>
+                                    <h1 class="text-3xl font-bold text-white">
+                                        <span class="text-blue-500">G</span><span class="text-red-500">o</span><span class="text-yellow-500">o</span><span class="text-blue-500">g</span><span class="text-green-500">l</span><span class="text-red-500">e</span> Weather
+                                    </h1>
+                                </div>
+                                <p id="current-date" class="text-gray-400 font-medium"></p>
+                            </div>
+                            
+                            <!-- Grid for weather cards -->
+                            <div class="grid grid-cols-2 md:grid-cols-3 gap-4">
+                                <!-- Card for Philippines -->
+                                <div class="bg-white/80 backdrop-blur-md rounded-lg shadow-lg p-3 transition-transform transform hover:scale-105 duration-300">
+                                    <h2 class="text-md font-semibold text-gray-800 mb-2 text-center">Philippines</h2>
+                                    <img src="https://placehold.co/400x250/3b82f6/ffffff?text=Google+Weather" alt="Google Weather screenshot for Philippines" class="w-full h-auto rounded-md">
+                                    <p class="text-xs text-gray-500 mt-1 text-center">Static representation of live data.</p>
+                                </div>
+                                <!-- Card for Vietnam -->
+                                <div class="bg-white/80 backdrop-blur-md rounded-lg shadow-lg p-3 transition-transform transform hover:scale-105 duration-300">
+                                    <h2 class="text-md font-semibold text-gray-800 mb-2 text-center">Vietnam</h2>
+                                    <img src="https://placehold.co/400x250/3b82f6/ffffff?text=Google+Weather" alt="Google Weather screenshot for Vietnam" class="w-full h-auto rounded-md">
+                                    <p class="text-xs text-gray-500 mt-1 text-center">Static representation of live data.</p>
+                                </div>
+                                <!-- Card for Thailand -->
+                                <div class="bg-white/80 backdrop-blur-md rounded-lg shadow-lg p-3 transition-transform transform hover:scale-105 duration-300">
+                                    <h2 class="text-md font-semibold text-gray-800 mb-2 text-center">Thailand</h2>
+                                    <img src="https://placehold.co/400x250/3b82f6/ffffff?text=Google+Weather" alt="Google Weather screenshot for Thailand" class="w-full h-auto rounded-md">
+                                    <p class="text-xs text-gray-500 mt-1 text-center">Static representation of live data.</p>
+                                </div>
+                                <!-- Card for Indonesia -->
+                                <div class="bg-white/80 backdrop-blur-md rounded-lg shadow-lg p-3 transition-transform transform hover:scale-105 duration-300">
+                                    <h2 class="text-md font-semibold text-gray-800 mb-2 text-center">Indonesia</h2>
+                                    <img src="https://placehold.co/400x250/3b82f6/ffffff?text=Google+Weather" alt="Google Weather screenshot for Indonesia" class="w-full h-auto rounded-md">
+                                    <p class="text-xs text-gray-500 mt-1 text-center">Static representation of live data.</p>
+                                </div>
+                                <!-- Card for Malaysia -->
+                                <div class="bg-white/80 backdrop-blur-md rounded-lg shadow-lg p-3 transition-transform transform hover:scale-105 duration-300">
+                                    <h2 class="text-md font-semibold text-gray-800 mb-2 text-center">Malaysia</h2>
+                                    <img src="https://placehold.co/400x250/3b82f6/ffffff?text=Google+Weather" alt="Google Weather screenshot for Malaysia" class="w-full h-auto rounded-md">
+                                    <p class="text-xs text-gray-500 mt-1 text-center">Static representation of live data.</p>
+                                </div>
+                                <!-- Card for Singapore -->
+                                <div class="bg-white/80 backdrop-blur-md rounded-lg shadow-lg p-3 transition-transform transform hover:scale-105 duration-300">
+                                    <h2 class="text-md font-semibold text-gray-800 mb-2 text-center">Singapore</h2>
+                                    <img src="https://placehold.co/400x250/3b82f6/ffffff?text=Google+Weather" alt="Google Weather screenshot for Singapore" class="w-full h-auto rounded-md">
+                                    <p class="text-xs text-gray-500 mt-1 text-center">Static representation of live data.</p>
+                                </div>
+                                <!-- New card for Brunei -->
+                                <div class="bg-white/80 backdrop-blur-md rounded-lg shadow-lg p-3 transition-transform transform hover:scale-105 duration-300">
+                                    <h2 class="text-md font-semibold text-gray-800 mb-2 text-center">Brunei</h2>
+                                    <img src="https://placehold.co/400x250/3b82f6/ffffff?text=Google+Weather" alt="Google Weather screenshot for Brunei" class="w-full h-auto rounded-md">
+                                    <p class="text-xs text-gray-500 mt-1 text-center">Static representation of live data.</p>
+                                </div>
+                                <!-- New card for Cambodia -->
+                                <div class="bg-white/80 backdrop-blur-md rounded-lg shadow-lg p-3 transition-transform transform hover:scale-105 duration-300">
+                                    <h2 class="text-md font-semibold text-gray-800 mb-2 text-center">Cambodia</h2>
+                                    <img src="https://placehold.co/400x250/3b82f6/ffffff?text=Google+Weather" alt="Google Weather screenshot for Cambodia" class="w-full h-auto rounded-md">
+                                    <p class="text-xs text-gray-500 mt-1 text-center">Static representation of live data.</p>
+                                </div>
+                                <!-- New card for Laos -->
+                                <div class="bg-white/80 backdrop-blur-md rounded-lg shadow-lg p-3 transition-transform transform hover:scale-105 duration-300">
+                                    <h2 class="text-md font-semibold text-gray-800 mb-2 text-center">Laos</h2>
+                                    <img src="https://placehold.co/400x250/3b82f6/ffffff?text=Google+Weather" alt="Google Weather screenshot for Laos" class="w-full h-auto rounded-md">
+                                    <p class="text-xs text-gray-500 mt-1 text-center">Static representation of live data.</p>
+                                </div>
+                                <!-- New card for Myanmar -->
+                                <div class="bg-white/80 backdrop-blur-md rounded-lg shadow-lg p-3 transition-transform transform hover:scale-105 duration-300">
+                                    <h2 class="text-md font-semibold text-gray-800 mb-2 text-center">Myanmar</h2>
+                                    <img src="https://placehold.co/400x250/3b82f6/ffffff?text=Google+Weather" alt="Google Weather screenshot for Myanmar" class="w-full h-auto rounded-md">
+                                    <p class="text-xs text-gray-500 mt-1 text-center">Static representation of live data.</p>
+                                </div>
+                                <!-- New card for Timor-Leste -->
+                                <div class="bg-white/80 backdrop-blur-md rounded-lg shadow-lg p-3 transition-transform transform hover:scale-105 duration-300">
+                                    <h2 class="text-md font-semibold text-gray-800 mb-2 text-center">Timor-Leste</h2>
+                                    <img src="https://placehold.co/400x250/3b82f6/ffffff?text=Google+Weather" alt="Google Weather screenshot for Timor-Leste" class="w-full h-auto rounded-md">
+                                    <p class="text-xs text-gray-500 mt-1 text-center">Static representation of live data.</p>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- New Division for Government Weather Agencies -->
+                        <div id="government-agencies-section" class="bg-white/10 backdrop-blur-md rounded-xl shadow-lg p-6 custom-scroll overflow-y-auto max-h-[30vh]">
+                            <h2 class="text-xl font-bold text-white mb-0 text-center">Weather Agencies</h2>
+                            <p class="text-gray-200 text-sm mb-4 text-center">
+                                Access official, real-time weather information and bulletins directly from nmeteorological agencies.
+                            </p>
+                            <!-- Grid for the first row (6 items) -->
+                            <div class="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-6 gap-2 mb-2">
+                                <a href="https://www.met.gov.bn/SitePages/Weather.aspx" target="_blank" class="block p-3 rounded-lg bg-white/20 hover:bg-white/30 transition-colors duration-200 flex items-center justify-between">
+                                    <img src="https://lh3.googleusercontent.com/d/1-b26ETXK23GaABYNodaGKJ6xwtuoBozj" alt="BDMD Logo" class="w-12 h-12 rounded-md">
+                                    <h3 class="font-medium text-sm text-white">BRN</h3>
+                                </a>
+                                <a href="https://www.mowram.gov.kh/" target="_blank" class="block p-3 rounded-lg bg-white/20 hover:bg-white/30 transition-colors duration-200 flex items-center justify-between">
+                                    <img src="https://lh3.googleusercontent.com/d/1fv0yXw97iQW4J17RXtnVLCan58pDk4jh" alt="MOWRAM Logo" class="w-12 h-12 rounded-md">
+                                    <h3 class="font-medium text-sm text-white">KHM</h3>
+                                </a>
+                                <a href="https://weather.bmkg.go.id/" target="_blank" class="block p-3 rounded-lg bg-white/20 hover:bg-white/30 transition-colors duration-200 flex items-center justify-between">
+                                    <img src="https://lh3.googleusercontent.com/d/1dxRtUFEDTtRuQudbSuhQovphrsihIMc2" alt="BMKG Logo" class="w-12 h-12 rounded-md">
+                                    <h3 class="font-medium text-sm text-white">IDN</h3>
+                                </a>
+                                <a href="https://dmhlao.la/joomla/index.php/en/" target="_blank" class="block p-3 rounded-lg bg-white/20 hover:bg-white/30 transition-colors duration-200 flex items-center justify-between">
+                                    <img src="https://lh3.googleusercontent.com/d/1oOR5fHVFdpVBK8DENsFwradMXbjNwpiN" alt="DMH Logo" class="w-12 h-12 rounded-md">
+                                    <h3 class="font-medium text-sm text-white">LAO</h3>
+                                </a>
+                                <a href="https://www.met.gov.my/" target="_blank" class="block p-3 rounded-lg bg-white/20 hover:bg-white/30 transition-colors duration-200 flex items-center justify-between">
+                                    <img src="https://lh3.googleusercontent.com/d/1WAnqe-WxSI0KGPrFqT7WA5B--h0KXKUT" alt="MetMalaysia Logo" class="w-12 h-12 rounded-md">
+                                    <h3 class="font-medium text-sm text-white">MYS</h3>
+                                </a>
+                                <a href="https://www.moezala.gov.mm/" target="_blank" class="block p-3 rounded-lg bg-white/20 hover:bg-white/30 transition-colors duration-200 flex items-center justify-between">
+                                    <img src="https://lh3.googleusercontent.com/d/1s1uwJ2x3NRFokvnOjwkDM91eEZRKvr4n" alt="DMH Logo" class="w-12 h-12 rounded-md">
+                                    <h3 class="font-medium text-sm text-white">MMR</h3>
+                                </a>
+                            </div>
+                            <!-- Flexbox for the second row (5 items) -->
+                            <div class="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-5 gap-2">
+                                <a href="https://www.pagasa.dost.gov.ph/" target="_blank" class="block p-3 rounded-lg bg-white/20 hover:bg-white/30 transition-colors duration-200 flex items-center justify-between">
+                                    <img src="https://lh3.googleusercontent.com/d/1_fPyU6dOkPoWt6AToW52u0KqPSm11aDj" alt="PAGASA Logo" class="w-12 h-12 rounded-md">
+                                    <h3 class="font-medium text-sm text-white">PHL</h3>
+                                </a>
+                                <a href="https://www.weather.gov.sg/" target="_blank" class="block p-3 rounded-lg bg-white/20 hover:bg-white/30 transition-colors duration-200 flex items-center justify-between">
+                                    <img src="https://lh3.googleusercontent.com/d/1pb1Txlvn7eDMLkxcsmrFnaqW2ntIfvYZ" alt="MSS Logo" class="w-12 h-12 rounded-md">
+                                    <h3 class="font-medium text-sm text-white">SGP</h3>
+                                </a>
+                                <a href="https://www.tmd.go.th/" target="_blank" class="block p-3 rounded-lg bg-white/20 hover:bg-white/30 transition-colors duration-200 flex items-center justify-between">
+                                    <img src="https://lh3.googleusercontent.com/d/1GVsIKxgo_20m1J6xjRS83PkV6b35Th38" alt="TMD Logo" class="w-12 h-12 rounded-md">
+                                    <h3 class="font-medium text-sm text-white">THA</h3>
+                                </a>
+                                <a href="https://worldweather.wmo.int/en/country.html?countryCode=TLS" target="_blank" class="block p-3 rounded-lg bg-white/20 hover:bg-white/30 transition-colors duration-200 flex items-center justify-between">
+                                    <img src="https://lh3.googleusercontent.com/d/1XukdK4eV39WTB4yXOY8PI-HoCEr7IKXT" alt="DGMS Logo" class="w-12 h-12 rounded-md">
+                                    <h3 class="font-medium text-sm text-white">TLS</h3>
+                                </a>
+                                <a href="https://www.nchmf.gov.vn/" target="_blank" class="block p-3 rounded-lg bg-white/20 hover:bg-white/30 transition-colors duration-200 flex items-center justify-between">
+                                    <img src="https://lh3.googleusercontent.com/d/1lC-mxpCDlDIp-qXo83JN-Vm4IMsqdfx-" alt="NCHMF Logo" class="w-12 h-12 rounded-md">
+                                    <h3 class="font-medium text-sm text-white">VNM</h3>
+                                </a>
+                            </div>
+                        </div>
+                    </div>
                 </div>
             </section>
 
@@ -239,25 +393,26 @@
                     </p>
                 </div>
                 <div class="grid grid-cols-1 sm:grid-cols-4 gap-8 max-w-8xl mx-auto">
-                    <!-- Card 1: Awareness -->
-                    <div class=" p-8 rounded-2xl shadow-xl text-center border-2 border-white/30 hover:border-white transition-colors duration-300">
+
+                    <!-- Card 1: Empowerment -->
+                    <div class="bg-white/10 p-8 rounded-2xl shadow-xl text-center border-2 border-white/30 hover:border-white transition-colors duration-300">
+                        <div class="flex items-center justify-center text-white mb-6"></div>
+                        <h3 class="text-2xl font-bold mb-3">Empower individuals <br> to advocate for <br> climate action</h3>
+                        <p class="text-gray-200 leading-relaxed">Equip users with practical knowledge, communication tools, and real-world guidance to become effective climate advocates.</p>
+                    </div>
+
+                    <!-- Card 2: Awareness -->
+                    <div class="bg-white/10 p-8 rounded-2xl shadow-xl text-center border-2 border-white/30 hover:border-white transition-colors duration-300">
                         <div class="flex items-center justify-center text-white mb-6"></div>
                         <h3 class="text-2xl font-bold mb-3">Raise climate awareness <br> across all age groups</h3>
                         <p class="text-gray-200 leading-relaxed">Provides educational content for children, youth, and adults to foster a shared understanding of climate issues.</p>
                     </div>
 
-                    <!-- Card 2: Literacy -->
+                    <!-- Card 3: Literacy -->
                     <div class="bg-white/10 p-8 rounded-2xl shadow-xl text-center border-2 border-white/30 hover:border-white transition-colors duration-300">
                         <div class="flex items-center justify-center text-white mb-6"></div>
                         <h3 class="text-2xl font-bold mb-3">Promote Local <br> Climate Literacy</h3>
                         <p class="text-gray-200 leading-relaxed">Equip students with vital climate knowledge through micro-lessons that tackle real-life Southeast Asian environmental challenges.</p>
-                    </div>
-
-                    <!-- Card 3: Empowerment -->
-                    <div class="bg-white/10 p-8 rounded-2xl shadow-xl text-center border-2 border-white/30 hover:border-white transition-colors duration-300">
-                        <div class="flex items-center justify-center text-white mb-6"></div>
-                        <h3 class="text-2xl font-bold mb-3">Empower individuals <br> to advocate for <br> climate action</h3>
-                        <p class="text-gray-200 leading-relaxed">Equip users with practical knowledge, communication tools, and real-world guidance to become effective climate advocates.</p>
                     </div>
 
                     <!-- Card 4: Real-world -->
@@ -319,10 +474,10 @@
                     <a href="#" class="flex items-start">
                         <img src="https://lh3.googleusercontent.com/d/1ZY-L4bYSRU5NEpts0t3dbSRB_5bBShn7"
                                  alt="KLIMATA Logo"
-                                 class="h-80 mt-10 mb-20">
+                                 class="h-80 mt-20 mb-20">
                     </a>
                     <div>
-                        <p class="text-xl leading-relaxed mb-3 mr-12 mt-12 ml-20">
+                        <p class="text-xl leading-relaxed mb-3 mr-12 mt-20 ml-20">
                             <br>KLIMATA is a team name that cleverly combines three Tagalog words to define our group's identity and mission.
                             <br> The name is a fusion of Klima, meaning "climate," which represents the main focus of our project on climate action.
                             <br> It also incorporates Lima, which means "five," signifying that we are a team of five members.
@@ -335,19 +490,26 @@
                 </div>
             </div>
 
-            <div class="grid grid-cols-1 sm:grid-cols-2 mb-20 gap-20 max-w-7xl mx-auto">
+            <div class="grid grid-cols-1 sm:grid-cols-2 mb-28 gap-20 max-w-7xl mx-auto">
                 <div class="bg-white/10 p-8 rounded-2xl shadow-xl text-center border-2 border-white/30 hover:border-white transition-colors duration-300">
                     <div class="flex items-center justify-center text-white mb-6"></div>
                     <h3 class="text-4xl font-bold mb-3">MISSION</h3>
-                    <p class="text-xl text-gray-200 leading-relaxed">To make climate knowledge a force for action—
-                        <br> through interactive, local, and life-saving education that empowers communities to adapt and thrive.
+                    <p class="text-xl text-gray-200 leading-relaxed">To turn climate knowledge into bold, life-saving action—
+                        <br> through interactive, local education that empowers Southeast Asian communities to adapt, lead, ands
+                        <br> rise together, grounded in the spirit of bayanihan
+                        <br> and resilience we carry from the Philippines.
+                        <br>
                     </p>
                 </div>
                 <div class="bg-white/10 p-8 rounded-2xl shadow-xl text-center border-2 border-white/30 hover:border-white transition-colors duration-300">
                     <div class="flex items-center justify-center text-white mb-6"></div>
                     <h3 class="text-4xl font-bold mb-3">VISION</h3>
-                    <p class="text-xl text-gray-200 leading-relaxed">To shape a Southeast Asia that not only survives the climate crisis but leads the way—through informed action,
-                        <br> resilient communities, and a generation empowered by climate education.
+                    <p class="text-xl text-gray-200 leading-relaxed">A Southeast Asia that doesn’t just endure the climate
+                        <br> crisis—but drives the solutions. Where every community 
+                        <br> is informed, every learner is equipped, and a new 
+                        <br> generation—rooted in shared values and sparked 
+                        <br> by Filipino ingenuity—leads a more resilient, 
+                        <br>  sustainable future.
                     </p>
                 </div>
             </div>
@@ -356,11 +518,26 @@
         <!-- Crisis Page Section -->
         <section id="crisis-page" class="page-section hidden">
             <div class="text-center py-12">
-                <h2 class="text-4xl md:text-5xl font-bold mb-12">Climate Crisis in Our Region</h2>
-                <p class="text-xl text-gray-200 mb-12 max-w-3xl mx-auto">
-                    Understand the pressing environmental issues affecting Southeast Asia 
-                    <br> and the cause-and-effect relationships behind them.
+                <h2 class="text-4xl md:text-5xl font-bold mb-6">Climate Crisis in Our Region</h2>
+                <p class="text-xl font-sans text-gray-200 mb-12 max-w-3xl mx-auto">
+                    The climate crisis is at our doorstep; 
+                    <br> we are not just its victims, <em>  but the architects of our survival. </em> 
                 </p>
+
+                <section class="w-full my-8">
+                    <div class="px-4 md:px-8">
+                        <!-- The user's card with adjusted classes for full width -->
+                        <div class="gap-8 w-full bg-white/10 p-12 rounded-2xl shadow-xl text-center border-2 border-white/30 hover:border-white transition-colors duration-300">
+                            <div class="flex items-center justify-center text-white mb-6"></div>
+                            <h3 class="text-2xl font-bold mb-3">MALAYSIA</h3>
+                            <h2 class="text-gray-xl font-bold mb-3">Extreme Heat</h2>
+                            <p class="text-gray-200 leading-relaxed">Causes: <br> Greenhouse Gas Emissions, <br> High Humidity</p>
+                            <h2 class="text-gray-xl font-bold mb-3"><br>CLIMACT!</h2>
+                            <p class="text-gray-200 leading-relaxed">Reduce your carbon footprint. <br> Go green. <br> Support renewable energy.</p>
+                        </div>
+                    </div>
+                </section>
+
                 <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 max-w-6xl mx-auto">
                     <!-- Card 1: Malaysia -->
                     <div class="bg-white/10 p-8 rounded-2xl shadow-xl text-center border-2 border-white/30 hover:border-white transition-colors duration-300">
