@@ -203,6 +203,11 @@
         .card.is-flipped {
             transform: rotateY(180deg);
         }
+        /* Custom style for sideways text using CSS writing-mode */
+        .sideways-text {
+            writing-mode: vertical-rl;
+            text-orientation: mixed;
+        }
     </style>
 </head>
 
@@ -557,28 +562,19 @@
 
                 <!-- New full-width card section below the main banner -->
                 <section class="w-full my-8 flex items-center justify-center">
-                    <div class="px-4 mt-40 md:px-8 w-full max-w-8xl">
+                    <div class="px-4 mt-72 md:px-8 w-full mb-12 max-w-8xl">
                         <!-- This is the container for the flippable card -->
                         <div class="card-container">
                             <div id="flippableCard" class="card">
                                 <!-- Front Face of the Card - Your original code is placed here -->
                                 <div class="card-face front">
-                                    <div class="w-full bg-white/10 p-12 rounded-2xl shadow-xl border-2 border-white/30 hover:border-white transition-colors duration-300">
-                                        <!-- Three-column layout -->
-                                        <div class="flex flex-col md:flex-row gap-8 items-center">
+                                    <div class="w-full bg-white/20 p-12 rounded-2xl shadow-xl border-2 border-white/30 hover:border-white transition-colors duration-300">
+                                        <!-- Main two-column layout for the card front -->
+                                        <div class="flex flex-col md:flex-row gap-8 items-stretch">
                                             
-                                            <!-- Left column for the flag -->
-                                            <div class="w-full md:w-1/3 flex flex-col items-start">
-                                                <h3 class="text-2xl font-bold mb-2 text-left w-full">PHILIPPINES</h3>
-                                                <!-- The image container is centered to keep the image centered while the text is left-aligned -->
-                                                <div class="w-full flex justify-center">
-                                                    <img src="https://lh3.googleusercontent.com/d/1J_YuuCx-e6-w1RF1s1XScOBRKZS_8y_o" alt="Philippine Flag" class="rounded-lg w-full h-auto max-w-xs">
-                                                </div>
-                                            </div>
-                                            
-                                            <!-- Middle column for the video -->
-                                            <div class="w-full md:w-1/3">
-                                                <!-- Placeholder for the YouTube video iframe with responsive aspect ratio -->
+                                            <!-- Left column for the YouTube video - Takes up more space -->
+                                            <div class="w-full md:w-7/12">
+                                                <!-- Responsive video container -->
                                                 <div class="relative w-full overflow-hidden rounded-lg" style="padding-top: 56.25%;">
                                                     <iframe class="absolute top-0 left-0 w-full h-full"
                                                         src="https://www.youtube.com/embed/dQw4w9WgXcQ"
@@ -589,24 +585,59 @@
                                                 </div>
                                             </div>
                                             
-                                            <!-- Right column divided into two sub-columns -->
-                                            <div class="w-full md:w-1/3 text-left">
+                                            <!-- Right column for all the text content - Divided into two rows -->
+                                            <div class="w-full md:w-5/12 flex flex-col gap-8">
+                                                
+                                                <!-- First row of the right column: "PHL", Flag, and "what's the big picture?" -->
+                                                <div class="flex items-center gap-4 pb-4">
+                                                    <!-- Container for "PHL" and flag to ensure they align and have a consistent height -->
+                                                    <div class="flex items-center gap-4 h-24">
+                                                        <!-- Sideways "PHL" text -->
+                                                        <div class="flex items-center h-full">
+                                                            <h3 class="font-bold text-6xl text-white sideways-text">PHL</h3>
+                                                        </div>
+                                                        <!-- Flag with height matching the "PHL" text container -->
+                                                        <img src="https://lh3.googleusercontent.com/d/1J_YuuCx-e6-w1RF1s1XScOBRKZS_8y_o" alt="Philippine Flag" class="rounded-lg h-full max-w-xs">
+                                                    </div>
+                                                    <!-- "What's the big picture?" text -->
+                                                    <p class="text-4xl text-left font-bold text-white">CRISIS: <br> what's the big picture?</p>
+                                                </div>
+
+                                                <!-- Second row of the right column: Divided into two sub-columns for Crisis and Climact -->
                                                 <div class="flex flex-col md:flex-row w-full gap-8">
-                                                    <!-- First sub-column for Flooding and Extreme Heat -->
-                                                    <div class="w-full md:w-1/2 space-y-4">
+                                                    <!-- First sub-column for Crises -->
+                                                    <div class="w-full md:w-1/2 text-left space-y-4">
+                                                        <h3 class="text-2xl font-bold mb-2 text-left text-yellow-500">CRISES</h3>
                                                         <div>
                                                             <h2 class="text-gray-xl font-bold mb-1">Flooding</h2>
                                                             <p class="text-gray-200 leading-relaxed">Causes: <br> Deforestation, Poor Drainage</p>
                                                         </div>
                                                         <div>
                                                             <h2 class="text-gray-xl font-bold mb-1">Extreme Heat</h2>
-                                                            <p class="text-gray-200 leading-relaxed">Causes: <br> El Niño</p>
+                                                            <p class="text-gray-200 leading-relaxed">Causes: <br> Urban Heat Island Effect, <br> Carbon Footprint</p>
+                                                        </div>
+                                                        <div>
+                                                            <h2 class="text-gray-xl font-bold mb-1">Sea Level Rise</h2>
+                                                            <p class="text-gray-200 leading-relaxed">Causes: <br> Thermal Expansion, Land Subsidence</p>
                                                         </div>
                                                     </div>
                                                     <!-- Second sub-column for CLIMACT! -->
-                                                    <div class="w-full md:w-1/2">
-                                                        <h2 class="text-gray-xl font-bold mb-3">CLIMACT!</h2>
-                                                        <p class="text-gray-200 leading-relaxed">Plant more trees. <br> Practice proper waste management. <br> Improve drainages.</p>
+                                                    <div class="w-full md:w-1/2 text-left">
+                                                        <h3 class="text-2xl font-bold mb-2 text-left text-green-400 w-full">CLIMACT!<br></h3>
+                                                        <div>
+                                                            <h2 class="text-gray-xl font-semibold mt-2 mb-2 text-green-100"><br>Reforestation and Watershed Management<br> Proper Waste Management <br> Improve and Maintain Drainage System</h2>
+                                                        </div>
+                                                        <div>
+                                                            <h2 class="text-gray-xl font-semibold mt-6 mb-6 text-green-100">Create Green Spaces <br> Reduce Carbon Footprint<br> Install Green Roofs and Walls</h2>
+                                                        </div>
+                                                        <div>
+                                                            <h2 class="text-gray-xl font-semibold mt-6 mb-6 text-green-100">Coastal Protection <br> Groundwater Regulation <br> Sustainable Urban Planning</h2>
+                                                        </div>
+                                                        <div>
+                                                        <em>
+                                                            <h2 class="text-gray-xl text-right font-sans mt-6 text-gray-300"><br>*click for more information</h2>
+                                                        </em>
+                                                        </div>
                                                     </div>
                                                 </div>
                                             </div>
@@ -615,18 +646,80 @@
                                 </div>
 
                                 <!-- Back Face of the Card - Added a placeholder back face -->
-                                <div class="card-face back bg-white/10 p-12 rounded-2xl shadow-xl border-2 border-white/30 hover:border-white transition-colors duration-300 text-center">
+                                <div class="card-face back w-full bg-white/20 p-12 rounded-2xl shadow-xl border-2 border-white/30 hover:border-white transition-colors duration-300">
                                     <div class="p-4">
                                         <h2 class="text-4xl font-bold mb-4">The Other Side</h2>
                                         <p class="text-gray-200 leading-relaxed">
                                             This is the back of the card. You can add any content here.
                                         </p>
                                     </div>
+                                    <div class="flex items-center gap-4 h-24">
+                                    <!-- Sideways "PHL" text -->
+                                        <div class="flex items-center h-full">
+                                            <h3 class="font-bold text-5xl text-white sideways-text">BRN</h3>
+                                        </div>
+                                    <!-- Flag with height matching the "PHL" text container -->
+                                    <img src="https://lh3.googleusercontent.com/d/1Tqs0bMd00S3aIHz1gCZ_XEI9QxgiK7ho" alt="Brunei Flag" class="rounded-lg h-full max-w-xs">
+                                    </div>
                                 </div>
                             </div>
                         </div>
                     </div>
                 </section>
+
+                <div class="grid grid-cols-1 sm:grid-cols-3 mt-80 gap-20 max-w-7xl mx-auto">
+                    <div class="bg-white/20 p-8 rounded-2xl shadow-xl text-center border-2 border-white/30 hover:border-white transition-colors duration-300">
+                        <div class="flex items-center gap-4 pb-4">
+                            <!-- Container for "PHL" and flag to ensure they align and have a consistent height -->
+                                <div class="flex items-center gap-4 h-24">
+                                    <!-- Sideways "PHL" text -->
+                                        <div class="flex items-center h-full">
+                                            <h3 class="font-bold text-5xl text-white sideways-text">BRN</h3>
+                                        </div>
+                                    <!-- Flag with height matching the "PHL" text container -->
+                                    <img src="https://lh3.googleusercontent.com/d/1Tqs0bMd00S3aIHz1gCZ_XEI9QxgiK7ho" alt="Brunei Flag" class="rounded-lg h-full max-w-xs">
+                                </div>
+                        </div>
+
+                            <!-- Second row of the right column: Divided into two sub-columns for Crisis and Climact -->
+                                <div class="flex flex-col md:flex-row w-full gap-8">
+                                <!-- First sub-column for Crises -->
+                                    <div class="w-full md:w-1/2 text-left space-y-4">
+                                        <h3 class="text-2xl font-bold mb-2 text-left text-yellow-500">CRISES</h3>
+                                            <div>
+                                                <h2 class="text-gray-xl font-bold mb-1">Flooding</h2>
+                                                    <p class="text-gray-200 leading-relaxed">Cause: <br> Global Warming</p>
+                                            </div>
+                                            <div>
+                                                <h2 class="text-gray-xl font-bold mb-1">Extreme Heat</h2>
+                                                <p class="text-gray-200 leading-relaxed">Cause: <br> Grenhouse Gas Emissions</p>
+                                            </div>
+                                            <div>
+                                                <h2 class="text-gray-xl font-bold mb-1">Forest Fires</h2>
+                                                <p class="text-gray-200 leading-relaxed">Cause: <br> El Niño</p>
+                                            </div>
+                                    </div>
+                                <!-- Second sub-column for CLIMACT! -->
+                                    <div class="w-full md:w-1/2 text-left">
+                                        <h3 class="text-2xl font-bold mb-2 text-left text-green-400 w-full">CLIMACT!<br></h3>
+                                            <div>
+                                                <h2 class="text-gray-xl font-semibold mt-2 mb-2 text-green-100"><br>Proper Waste Management</h2>
+                                            </div>
+                                            <div>
+                                                <h2 class="text-gray-xl font-semibold mt-6 mb-6 text-green-100"><br>Reduce Carbon Footprint</h2>
+                                            </div>
+                                            <div>
+                                                <h2 class="text-gray-xl font-semibold mt-6 mb-6 text-green-100"><br>Sustainable Urban Planning</h2>
+                                            </div>
+                                            <div>
+                                                <em>
+                                                    <h2 class="text-gray-xl text-right font-sans mt-6 text-gray-300"><br>*click for more information</h2>
+                                                </em>
+                                            </div>
+                                    </div>
+                            </div>
+                    </div>
+                </div>
             </div>
 
             <script>
@@ -643,14 +736,30 @@
 
         <!-- Survival & Adaptation Page Section -->
         <!-- The gradient classes are now applied directly to the section to cover the full screen -->
-        <section id="survival-page" class="page-section p-8 min-h-screen bg-gradient-to-br from-green-400 to-blue-600 text-white">
-                    <div class="text-center py-12">
-                        <h2 class="text-4xl md:text-5xl font-bold mb-12">Survival & Adaptation Strategies</h2>
-                        <p class="text-xl text-gray-200 mb-12 max-w-3xl mx-auto">
-                            Bridge scientific knowledge with practical, real-world guidance to prepare for and respond to climate-related threats.
-                        </p>
+        <section id="survival-page" class="page-section p-12 min-h-screen bg-gradient-to-br from-green-400 to-blue-600 text-white">
+                    <div class="text-center">
+
+                        <div class="flex flex-col md:flex-row gap-5 items-stretch">
+                            <div>
+                                <h2 class="text-4xl text-left md:text-5xl font-bold mb-6">Survival & Adaptation Strategies</h2>
+                                <p class="text-xl text-left text-gray-200 mb-12 max-w-3xl mx-auto">
+                                    Bridge scientific knowledge with practical, real-world guidance <br>to prepare for and respond to climate-related threats.
+                                </p>
+                            </div>
+                            <div class="w-full md:w-4/5">
+                                <!-- Responsive video container -->
+                                <div class="relative w-full overflow-hidden rounded-lg mb-12" style="padding-top: 56.25%;">
+                                    <iframe class="absolute top-0 left-0 w-full h-full"
+                                    src="https://www.youtube.com/embed/dQw4w9WgXcQ"
+                                    frameborder="0"
+                                    allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+                                    allowfullscreen>
+                                    </iframe>
+                                </div>
+                            </div>
+                        </div>
+
                         <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-7 max-w-7xl mx-auto">
-                            
                             <!-- Card 1: Basic Life Support -->
                             <!-- The data-id attribute is key for the JS to identify the card -->
                             <div data-card-id="bls" class="card-parent bg-white/10 p-4 rounded-2xl shadow-xl border-2 border-white/30 hover:border-white transition-colors duration-300 cursor-pointer">
