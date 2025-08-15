@@ -23,29 +23,105 @@
         .hidden {
             display: none;
         }
+        /* Ensure html and body take full height for viewport-relative units to work */
+        html, body {
+            height: 100%;
+            margin: 0;
+            padding: 0;
+            scroll-behavior: smooth;
+        }
+        
+        body {
+            font-family: 'Inter', sans-serif;
+            background-color: #1a202c; /* Dark background for contrast */
+            color: white;
+            min-height: 200vh;
+        }
+        .reveal-section {
+            position: relative;
+            height: 50vh;
+            background-image: url('https://blog.nst.edu.ph/wp-content/uploads/2024/12/feature-Pic-1.jpg');
+            filter: blur(0px);
+            background-size: cover;
+            background-position: center;
+            background-attachment: fixed;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            color: #05420d;
+            text-shadow: -10px -2px 10px #000000;
+            text-align: center;
+            overflow: hidden;
+            margin-top: 4rem;
+            margin-bottom: 4rem;
+        }
+        .reveal-overlay {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0, 0, 0, 0.8);
+            --skew-amount: 0%;
+            clip-path: polygon(0% 0%, 100% 0%, calc(100% - var(--skew-amount)) 100%, calc(0% - var(--skew-amount)) 100%);
+            transform: translateX(0%);
+            transition: transform 1.8s ease-out;
+            z-index: 0;
+        }
+        .reveal-content {
+            opacity: 0;
+            transition: opacity 0.8s ease-out;
+            font-size: 2.5rem;
+            font-weight: bold;
+            text-align: center;
+            color: rgb(255, 255, 255);
+            z-index: 2;
+            position: relative;
+        }
+        .reveal-section::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: radial-gradient(
+                ellipse at center,
+                rgba(0, 0, 0, 0) 0%,
+                rgba(0, 0, 0, 0.5) 180%,
+                rgba(0, 0, 0, 0.8) 100%
+            );
+            z-index: 0;
+        }
+        html {
+            background: linear-gradient(to bottom right, var(--tw-gradient-from), var(--tw-gradient-to));
+            background-attachment: fixed;
+            height: 100%;
+            --tw-gradient-from: #6ee7b7; /* green-500 */
+            --tw-gradient-to: #3b82f6; /* blue-600 */
+        }
     </style>
 </head>
+
 <body class="bg-gradient-to-br from-green-500 to-blue-600 text-white font-sans min-h-screen flex flex-col">
 
     <!-- Header and Navigation -->
     <header class="sticky top-0 z-50 bg-white/10 backdrop-blur-md shadow-lg rounded-b-3xl">
         <nav class="container mx-auto px-6 py-4 flex items-center justify-between">
             <div class="flex items-center space-x-2">
-                <!-- Replaced the SVG icon and text with a single image. -->
-                <!-- The image is wrapped in a link to serve as the home button. -->
                 <a href="#home" class="flex items-center nav-link">
-                    <img src="https://lh3.googleusercontent.com/d/1aS9fsXtWCyiahFwtMbfjHdBEgZ72WlS-" 
-                         alt="KLIMATA Logo"
-                         class="h-12">
+                    <img src="https://lh3.googleusercontent.com/d/1RoqXsweePfF8CxFQSY9ElmAM7BS9JpTr"
+                                alt="KLIMATA Logo"
+                                class="h-12">
                 </a>
             </div>
             <div class="hidden md:flex space-x-8 text-lg font-medium">
                 <a href="#home" class="nav-link text-white hover:text-green-200 transition-colors duration-300">Home</a>
                 <a href="#crisis" class="nav-link text-white hover:text-green-200 transition-colors duration-300">Crisis</a>
                 <a href="#survival" class="nav-link text-white hover:text-green-200 transition-colors duration-300">Survival & Adaptation</a>
-                <a href="#virtual-earth" class="nav-link text-white hover:text-green-200 transition-colors duration-300">Virtual Earth</a>
+                <a href="#virtual-earth" class="nav-link text-white hover:text-green-200 transition-colors duration-300">SurvivEarth</a>
             </div>
-            <!-- Mobile Menu Button - a more complex multi-page site would require a separate js for this -->
+            <!-- Mobile Menu Button -->
             <button class="md:hidden text-white focus:outline-none">
                 <svg xmlns="http://www.w3.org/2000/svg" class="h-8 w-8" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                     <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16m-7 6h7" />
@@ -62,8 +138,6 @@
         <section id="home-page" class="page-section">
             <!-- Full-width banner section with the image background -->
             <section id="full-width-banner" class="relative h-screen overflow-hidden">
-                <!-- Background image div positioned absolutely to cover the entire section -->
-                <!-- The filter: blur() has been added here -->
                 <div class="absolute inset-0 bg-cover bg-center bg-no-repeat transform scale-110"
                     style="background-image: url('https://png.pngtree.com/thumb_back/fh260/background/20250325/pngtree-a-serene-landscape-depicting-lush-green-hills-vibrant-trees-gentle-river-image_17139218.jpg'); filter: blur(5px);">
                 </div>
@@ -72,7 +146,6 @@
                 <!-- The content is now centered on top of the full-width image and overlay -->
                 <div class="relative z-10 flex flex-col items-center justify-center text-center py-24 md:py-32 space-y-8 h-full">
                     <h2 class="text-xl md:text-2xl font-bold tracking-widest text-gray-100">SIMULATE. SURVIVE. SUSTAIN.</h2>
-                    <!-- The text color for CLIMACT is white and the font weight is extrabold, as requested -->
                     <h1 class="text-6xl sm:text-7xl md:text-9xl font-extrabold text-white leading-tight">
                         CLIMACT
                     </h1>
@@ -84,18 +157,18 @@
                     </em>
                 </div>
             </section>
-            
+
             <!-- GOALS SECTION - Now inside the home-page container -->
-            <div class="container mx-auto px-6 mt-12 mb-16">
+            <div class="container mx-auto px-1 mt-5 mb-16">
                 <div class="text-center py-12">
                     <h2 class="text-4xl md:text-8xl font-bold">GOALS</h2>
-                    <p class="text-xl text-gray-200 mb-12 max-w-3xl mx-auto">
+                    <p class="text-xl text-gray-200 mb-1 max-w-3xl mx-auto">
                         What are the aims of this project?
                     </p>
                 </div>
-                <div class="grid grid-cols-1 sm:grid-cols-2 gap-8 max-w-4xl mx-auto">
+                <div class="grid grid-cols-1 sm:grid-cols-4 gap-8 max-w-8xl mx-auto">
                     <!-- Card 1: Awareness -->
-                    <div class="bg-white/10 p-8 rounded-2xl shadow-xl text-center border-2 border-white/30 hover:border-white transition-colors duration-300">
+                    <div class=" p-8 rounded-2xl shadow-xl text-center border-2 border-white/30 hover:border-white transition-colors duration-300">
                         <div class="flex items-center justify-center text-white mb-6"></div>
                         <h3 class="text-2xl font-bold mb-3">Raise climate awareness <br> across all age groups</h3>
                         <p class="text-gray-200 leading-relaxed">Provides educational content for children, youth, and adults to foster a shared understanding of climate issues.</p>
@@ -104,23 +177,106 @@
                     <!-- Card 2: Literacy -->
                     <div class="bg-white/10 p-8 rounded-2xl shadow-xl text-center border-2 border-white/30 hover:border-white transition-colors duration-300">
                         <div class="flex items-center justify-center text-white mb-6"></div>
-                        <h3 class="text-2xl font-bold mb-3">Promote Local Climate Literacy</h3>
+                        <h3 class="text-2xl font-bold mb-3">Promote Local <br> Climate Literacy</h3>
                         <p class="text-gray-200 leading-relaxed">Equip students with vital climate knowledge through micro-lessons that tackle real-life Southeast Asian environmental challenges.</p>
                     </div>
 
                     <!-- Card 3: Empowerment -->
                     <div class="bg-white/10 p-8 rounded-2xl shadow-xl text-center border-2 border-white/30 hover:border-white transition-colors duration-300">
                         <div class="flex items-center justify-center text-white mb-6"></div>
-                        <h3 class="text-2xl font-bold mb-3">Empower individuals to <br> advocate for climate action</h3>
+                        <h3 class="text-2xl font-bold mb-3">Empower individuals <br> to advocate for <br> climate action</h3>
                         <p class="text-gray-200 leading-relaxed">Equip users with practical knowledge, communication tools, and real-world guidance to become effective climate advocates.</p>
                     </div>
 
                     <!-- Card 4: Real-world -->
                     <div class="bg-white/10 p-8 rounded-2xl shadow-xl text-center border-2 border-white/30 hover:border-white transition-colors duration-300">
                         <div class="flex items-center justify-center text-white mb-6"></div>
-                        <h3 class="text-2xl font-bold mb-3">Bridge scientific knowledge with practical, <br>real-world responses</h3>
+                        <h3 class="text-2xl font-bold mb-3">Bridge scientific knowledge with practical, real-world responses</h3>
                         <p class="text-gray-200 leading-relaxed">Going beyond theory, the platform equips users with survival strategies and local adaptation tips to face climate threats head-on.</p>
                     </div>
+                </div>
+            </div>
+            <!-- The Background Reveal Section -->
+            <div class="reveal-section" id="revealSection">
+                <!-- The overlay that will be clipped and translated -->
+                <div class="reveal-overlay" id="revealOverlay"></div>
+                <!-- Content that appears over the revealed background -->
+                <div class="reveal-content" id="revealContent">
+                    <p class="text-4xl sm:text-4xl md:text-8xl font-extrabold text-white leading-tight text-center">MEET KLIMATA</p>
+                </div>
+            </div>
+            <script>
+                document.addEventListener('DOMContentLoaded', () => {
+                    const revealSection = document.getElementById('revealSection');
+                    const revealOverlay = document.getElementById('revealOverlay');
+                    const revealContent = document.getElementById('revealContent');
+
+                    const SKEW_AMOUNT_PERCENT = 20;
+
+                    function handleScroll() {
+                        if (!revealSection) {
+                            return;
+                        }
+                        const sectionRect = revealSection.getBoundingClientRect();
+                        const sectionTop = sectionRect.top;
+                        const windowHeight = window.innerHeight;
+                        const startRevealPoint = windowHeight * 0.8;
+                        const endRevealPoint = windowHeight * 0.2;
+                        let revealProgress = 0;
+
+                        if (sectionTop < startRevealPoint && sectionTop > endRevealPoint) {
+                            revealProgress = (startRevealPoint - sectionTop) / (startRevealPoint - endRevealPoint);
+                        } else if (sectionTop <= endRevealPoint) {
+                            revealProgress = 1;
+                        }
+                        const translateXAmount = revealProgress * (100 + SKEW_AMOUNT_PERCENT);
+                        if (revealOverlay) {
+                            revealOverlay.style.transform = `translateX(${translateXAmount}%)`;
+                        }
+                        if (revealContent) {
+                            revealContent.style.opacity = revealProgress;
+                        }
+                    }
+                    handleScroll();
+                    window.addEventListener('scroll', handleScroll);
+                });
+            </script>
+
+            <div class="flex flex-col items-center justify-center space-y-4">
+                <div class="flex items-start justify-center space-x-0">
+                    <a href="#" class="flex items-start">
+                        <img src="https://lh3.googleusercontent.com/d/1ZY-L4bYSRU5NEpts0t3dbSRB_5bBShn7"
+                                alt="KLIMATA Logo"
+                                class="h-80 mb-20">
+                    </a>
+                    <div>
+                        <p class="text-xl leading-relaxed mb-3 mr-12 mt-12 ml-20">
+                            KLIMATA is a team name that cleverly combines three Tagalog words to define our group's identity and mission.
+                            <br> The name is a fusion of Klima, meaning "climate," which represents the main focus of our project on climate action.
+                            <br> It also incorporates Lima, which means "five," signifying that we are a team of five members.
+                            <br> Finally, the name includes Mata, meaning "eyes," which symbolizes our commitment to carefully looking ahead
+                            <br> at the future consequences of our actions.
+                            <br> <br> Together, KLIMATA signifies a five-person team dedicated to addressing climate change,
+                            <br> with a clear-eyed focus on making a positive, long-term impact.
+                        </p>
+                    </div>
+                </div>
+            </div>
+
+            <div class="grid grid-cols-1 sm:grid-cols-2 mb-20 gap-20 max-w-7xl mx-auto">
+                <div class="bg-white/10 p-8 rounded-2xl shadow-xl text-center border-2 border-white/30 hover:border-white transition-colors duration-300">
+                    <div class="flex items-center justify-center text-white mb-6"></div>
+                    <h3 class="text-4xl font-bold mb-3">MISSION</h3>
+                    <p class="text-xl text-gray-200 leading-relaxed">To make climate knowledge a force for action—
+                        <br> through interactive, local, and life-saving education that empowers communities to adapt and thrive.
+                    </p>
+                </div>
+                <div class="bg-white/10 p-8 rounded-2xl shadow-xl text-center border-2 border-white/30 hover:border-white transition-colors duration-300">
+                    <div class="flex items-center justify-center text-white mb-6"></div>
+                    <h3 class="text-4xl font-bold mb-3">VISION</h3>
+                    <p class="text-xl text-gray-200 leading-relaxed">To shape a Southeast Asia that not only survives the climate crisis but leads the way—through informed action,
+                        <br> resilient communities, and a generation empowered by climate education.
+                    </p>
                 </div>
             </div>
         </section>
@@ -177,30 +333,39 @@
                         <!-- Responsive video container -->
                         <div class="aspect-w-16 aspect-h-9 w-full rounded-xl overflow-hidden mb-4">
                             <!-- Embedded YouTube video for Basic Life Support -->
-                            <iframe 
-                                class="w-full h-full" 
-                                src="https://www.youtube.com/embed/Plse2FOkV4Q" 
-                                title="How to perform CPR - A Step-by-Step Guide" 
-                                frameborder="0" 
-                                allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" 
+                            <iframe
+                                class="w-full h-full"
+                                src="https://www.youtube.com/embed/Plse2FOkV4Q"
+                                title="How to perform CPR - A Step-by-Step Guide"
+                                frameborder="0"
+                                allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
                                 allowfullscreen>
                             </iframe>
                         </div>
                         <!-- Card Text Content -->
                         <h3 class="text-2xl font-bold mb-3">Basic Life Support</h3>
                         <p class="text-gray-200 leading-relaxed">Learn essential first aid and CPR techniques for emergencies, including those caused by extreme weather.</p>
+                        <p class="text-gray-200 align-left leading-relaxed">
+                            <br>1. Ensure the scene is safe and check if the person responds.
+                            <br>2. Call emergency services immediately if unresponsive.
+                            <br>3. Open the airway and check for normal breathing for up to 10 seconds.
+                            <br>4. Perform chest compressions hard and fast, about 5 cm deep, at 100–120 per minute.
+                            <br>5. Give 2 rescue breaths after 30 compressions if trained and confident.
+                            <br>6. Continue cardiopulmonary resuscitation (CPR) cycles until help arrives or the person recovers.
+                            <br>7. Use an Automated External Defibrillator (AED) as soon as it’s available and follow its instructions.
+                        </p>
                     </div>
                     <!-- Card 2: Flood Preparedness -->
                     <div class="bg-white/10 p-4 rounded-2xl shadow-xl text-center border-2 border-white/30 hover:border-white transition-colors duration-300">
                         <!-- Responsive video container -->
                         <div class="aspect-w-16 aspect-h-9 w-full rounded-xl overflow-hidden mb-4">
                             <!-- Embedded YouTube video for Flood Preparedness -->
-                            <iframe 
-                                class="w-full h-full" 
-                                src="https://www.youtube.com/embed/uIVk_VSPNR4" 
-                                title="How to Prepare for, Survive, and Stay Informed About Flooding" 
-                                frameborder="0" 
-                                allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" 
+                            <iframe
+                                class="w-full h-full"
+                                src="https://www.youtube.com/embed/uIVk_VSPNR4"
+                                title="How to Prepare for, Survive, and Stay Informed About Flooding"
+                                frameborder="0"
+                                allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
                                 allowfullscreen>
                             </iframe>
                         </div>
@@ -213,12 +378,12 @@
                         <!-- Responsive video container -->
                         <div class="aspect-w-16 aspect-h-9 w-full rounded-xl overflow-hidden mb-4">
                             <!-- Embedded YouTube video for Heat Safety -->
-                            <iframe 
-                                class="w-full h-full" 
-                                src="https://www.youtube.com/embed/kuGqzVgPTso" 
-                                title="Heat Stress Safety: How to Prevent Heat-Related Illnesses at Work" 
-                                frameborder="0" 
-                                allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" 
+                            <iframe
+                                class="w-full h-full"
+                                src="https://www.youtube.com/embed/kuGqzVgPTso"
+                                title="Heat Stress Safety: How to Prevent Heat-Related Illnesses at Work"
+                                frameborder="0"
+                                allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
                                 allowfullscreen>
                             </iframe>
                         </div>
@@ -230,10 +395,10 @@
             </div>
         </section>
 
-        <!-- Virtual Earth Page Section -->
+        <!-- SurvivEarth Page Section -->
         <section id="virtual-earth-page" class="page-section hidden">
             <div class="flex flex-col items-center py-12 text-center">
-                <h2 class="text-4xl md:text-5xl font-bold mb-8">Virtual Earth</h2>
+                <h2 class="text-4xl md:text-5xl font-bold mb-8">SurvivEarth</h2>
                 <p class="text-xl text-gray-200 mb-8 max-w-3xl mx-auto">
                     A digital representation of our planet where you can simulate climate scenarios and test your knowledge through interactive quizzes.
                 </p>
@@ -256,12 +421,60 @@
         </div>
     </footer>
 
+    <!-- ======================================================== -->
+    <!-- CHATBOT INTERFACE -->
+    <!-- This section is fixed to the bottom right of the screen -->
+    <!-- ======================================================== -->
+    <div class="fixed bottom-4 right-4 z-[100]">
+        <!-- Chatbot toggle button -->
+        <button id="chatbot-toggle" class="bg-blue-600 text-white rounded-full p-4 shadow-lg hover:bg-blue-700 transition duration-300 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:ring-offset-2">
+            <!-- Chat icon -->
+            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-8 h-8">
+                <path stroke-linecap="round" stroke-linejoin="round" d="M8.625 12a.375.375 0 1 1-.75 0 .375.375 0 0 1 .75 0Zm0 0H8.25m4.125 0a.375.375 0 1 1-.75 0 .375.375 0 0 1 .75 0Zm0 0H12m4.125 0a.375.375 0 1 1-.75 0 .375.375 0 0 1 .75 0Zm0 0H16.5m2.25 6.75a2.25 2.25 0 0 0 2.25-2.25v-1.372c0-.516-.35-1.006-.948-1.155L14.75 12h-.878l-2.471 2.285c-.94.872-2.316.329-2.316-1.112v-.827c0-.528-.152-1.042-.445-1.478l-.348-.521a1.5 1.5 0 0 0-2.337.89l-.26 1.442v1.365a2.25 2.25 0 0 0 2.25 2.25H16.5Zm2.25-6.75a2.25 2.25 0 0 0-2.25-2.25H6.75a2.25 2.25 0 0 0-2.25 2.25v6a2.25 2.25 0 0 0 2.25 2.25h6.75a.75.75 0 0 0 .75-.75v-4.5a.75.75 0 0 0-.75-.75H6.75Z" />
+            </svg>
+        </button>
+
+        <!-- Chatbot container - initially hidden -->
+        <div id="chatbot-container" class="hidden bg-white/90 backdrop-blur-md rounded-2xl shadow-xl w-80 h-[480px] flex flex-col transition-all duration-300 transform translate-y-4 opacity-0 scale-95 origin-bottom-right">
+            <!-- Chatbot header -->
+            <div class="bg-blue-600 text-white p-4 rounded-t-2xl flex items-center justify-between">
+                <h3 class="text-xl font-bold">CLIMACT Assistant</h3>
+                <button id="chatbot-close" class="text-white hover:text-gray-200">
+                    <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" class="w-6 h-6">
+                        <path stroke-linecap="round" stroke-linejoin="round" d="M6 18 18 6M6 6l12 12" />
+                    </svg>
+                </button>
+            </div>
+            <!-- Chat messages display area -->
+            <div id="chat-output" class="flex-grow overflow-y-auto p-4 space-y-4">
+                <!-- Initial welcome message -->
+                <div class="flex justify-start">
+                    <div class="bg-gray-200 text-gray-800 p-3 rounded-lg max-w-[80%] shadow-md">
+                        Hello! I'm your CLIMACT Assistant, powered by Gemini. How can I help you with climate-related questions?
+                    </div>
+                </div>
+            </div>
+            <!-- Chat input area -->
+            <div class="p-4 border-t border-gray-200 bg-white rounded-b-2xl">
+                <div class="flex items-center space-x-2">
+                    <input type="text" id="prompt-input" placeholder="Ask a question about climate..." class="flex-grow p-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500 transition duration-200 text-gray-800">
+                    <button id="send-button" class="bg-blue-600 text-white p-2 rounded-lg hover:bg-blue-700 transition duration-200 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:ring-offset-2">
+                        <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" class="w-6 h-6">
+                            <path stroke-linecap="round" stroke-linejoin="round" d="M6 12 3.269 3.125A59.768 59.768 0 0 1 21.485 12 59.77 59.77 0 0 1 3.27 20.875L5.999 12Zm0 0h7.5" />
+                        </svg>
+                    </button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+
     <script>
+        // Existing page navigation script
         document.addEventListener('DOMContentLoaded', () => {
             const navLinks = document.querySelectorAll('.nav-link');
             const sections = document.querySelectorAll('.page-section');
 
-            // Function to show a specific page and hide others
             const showPage = (pageId) => {
                 sections.forEach(section => {
                     section.classList.add('hidden');
@@ -272,16 +485,14 @@
                 }
             };
 
-            // Event listener for navigation links
             navLinks.forEach(link => {
                 link.addEventListener('click', (event) => {
-                    event.preventDefault(); // Prevent the browser from trying to navigate
+                    event.preventDefault();
                     const targetId = link.getAttribute('href').substring(1) + '-page';
                     showPage(targetId);
                 });
             });
 
-            // Handle initial page load, check for URL hash
             const initialHash = window.location.hash;
             if (initialHash) {
                 const targetId = initialHash.substring(1) + '-page';
@@ -293,6 +504,181 @@
             } else {
                 showPage('home-page');
             }
+        });
+
+        // Background reveal effect script
+        document.addEventListener('DOMContentLoaded', () => {
+            const revealSection = document.getElementById('revealSection');
+            const revealOverlay = document.getElementById('revealOverlay');
+            const revealContent = document.getElementById('revealContent');
+
+            const SKEW_AMOUNT_PERCENT = 20;
+
+            function handleScroll() {
+                if (!revealSection) {
+                    return;
+                }
+                const sectionRect = revealSection.getBoundingClientRect();
+                const sectionTop = sectionRect.top;
+                const windowHeight = window.innerHeight;
+                const startRevealPoint = windowHeight * 0.8;
+                const endRevealPoint = windowHeight * 0.2;
+                let revealProgress = 0;
+
+                if (sectionTop < startRevealPoint && sectionTop > endRevealPoint) {
+                    revealProgress = (startRevealPoint - sectionTop) / (startRevealPoint - endRevealPoint);
+                } else if (sectionTop <= endRevealPoint) {
+                    revealProgress = 1;
+                }
+                const translateXAmount = revealProgress * (100 + SKEW_AMOUNT_PERCENT);
+                if (revealOverlay) {
+                    revealOverlay.style.transform = `translateX(${translateXAmount}%)`;
+                }
+                if (revealContent) {
+                    revealContent.style.opacity = revealProgress;
+                }
+            }
+            handleScroll();
+            window.addEventListener('scroll', handleScroll);
+        });
+
+        // ========================================================
+        // CHATBOT SCRIPT
+        // ========================================================
+        document.addEventListener('DOMContentLoaded', () => {
+            const chatbotToggle = document.getElementById('chatbot-toggle');
+            const chatbotContainer = document.getElementById('chatbot-container');
+            const chatbotClose = document.getElementById('chatbot-close');
+            const chatOutput = document.getElementById('chat-output');
+            const promptInput = document.getElementById('prompt-input');
+            const sendButton = document.getElementById('send-button');
+
+            const API_URL = "https://generativelanguage.googleapis.com/v1beta/models/gemini-2.5-flash-preview-05-20:generateContent?key=";
+            let chatHistory = [{
+                role: "user",
+                parts: [{
+                    text: "You are a helpful chatbot for a website about climate change in Southeast Asia. Your name is CLIMACT Assistant. You provide information on climate crisis, survival strategies, and facts. Keep your answers concise, informative, and friendly."
+                }]
+            }];
+
+            // Function to toggle the chatbot visibility
+            const toggleChatbot = () => {
+                const isHidden = chatbotContainer.classList.contains('hidden');
+                if (isHidden) {
+                    chatbotContainer.classList.remove('hidden');
+                    setTimeout(() => {
+                        chatbotContainer.classList.remove('translate-y-4', 'opacity-0', 'scale-95');
+                    }, 10);
+                } else {
+                    chatbotContainer.classList.add('translate-y-4', 'opacity-0', 'scale-95');
+                    setTimeout(() => {
+                        chatbotContainer.classList.add('hidden');
+                    }, 300);
+                }
+            };
+
+            // Event listeners for toggling the chatbot
+            chatbotToggle.addEventListener('click', toggleChatbot);
+            chatbotClose.addEventListener('click', toggleChatbot);
+
+            // Function to add a message to the chat display
+            const addMessage = (text, sender) => {
+                const messageElement = document.createElement('div');
+                messageElement.classList.add('flex', sender === 'user' ? 'justify-end' : 'justify-start');
+                
+                const messageBubble = document.createElement('div');
+                messageBubble.classList.add('p-3', 'rounded-lg', 'max-w-[80%]', 'shadow-md');
+                if (sender === 'user') {
+                    messageBubble.classList.add('bg-blue-600', 'text-white');
+                } else {
+                    messageBubble.classList.add('bg-gray-200', 'text-gray-800');
+                }
+
+                messageBubble.textContent = text;
+                messageElement.appendChild(messageBubble);
+                chatOutput.appendChild(messageElement);
+                
+                // Scroll to the bottom of the chat window
+                chatOutput.scrollTop = chatOutput.scrollHeight;
+            };
+
+            // Function to send a message to the Gemini API
+            const sendMessage = async () => {
+                const prompt = promptInput.value.trim();
+                if (prompt === '') return;
+
+                // Add user message to chat history and display
+                addMessage(prompt, 'user');
+                chatHistory.push({
+                    role: "user",
+                    parts: [{
+                        text: prompt
+                    }]
+                });
+                promptInput.value = '';
+
+                // Add a temporary loading message from the bot
+                const loadingMessage = document.createElement('div');
+                loadingMessage.classList.add('flex', 'justify-start');
+                const loadingBubble = document.createElement('div');
+                loadingBubble.classList.add('p-3', 'rounded-lg', 'max-w-[80%]', 'shadow-md', 'bg-gray-200', 'text-gray-800');
+                loadingBubble.textContent = 'Assistant is typing...';
+                loadingMessage.appendChild(loadingBubble);
+                chatOutput.appendChild(loadingMessage);
+                chatOutput.scrollTop = chatOutput.scrollHeight;
+
+                try {
+                    let backoff = 1000;
+                    let response;
+                    let result;
+                    for (let i = 0; i < 5; i++) {
+                        response = await fetch(API_URL, {
+                            method: 'POST',
+                            headers: {
+                                'Content-Type': 'application/json'
+                            },
+                            body: JSON.stringify({
+                                contents: chatHistory
+                            })
+                        });
+
+                        if (response.status === 429) {
+                            await new Promise(resolve => setTimeout(resolve, backoff));
+                            backoff *= 2;
+                        } else {
+                            result = await response.json();
+                            break;
+                        }
+                    }
+                    if (result && result.candidates && result.candidates.length > 0 &&
+                        result.candidates[0].content && result.candidates[0].content.parts &&
+                        result.candidates[0].content.parts.length > 0) {
+                        const botResponse = result.candidates[0].content.parts[0].text;
+                        chatHistory.push({
+                            role: "model",
+                            parts: [{
+                                text: botResponse
+                            }]
+                        });
+                        loadingMessage.remove(); // Remove loading message
+                        addMessage(botResponse, 'bot');
+                    } else {
+                        throw new Error('Unexpected API response structure.');
+                    }
+                } catch (error) {
+                    console.error('Error fetching from Gemini API:', error);
+                    loadingMessage.remove(); // Remove loading message
+                    addMessage('Sorry, I couldn\'t get a response. Please try again.', 'bot');
+                }
+            };
+
+            // Event listener for the send button and enter key
+            sendButton.addEventListener('click', sendMessage);
+            promptInput.addEventListener('keydown', (event) => {
+                if (event.key === 'Enter') {
+                    sendMessage();
+                }
+            });
         });
     </script>
 </body>
