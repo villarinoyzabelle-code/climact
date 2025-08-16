@@ -635,7 +635,7 @@
                                                         </div>
                                                         <div>
                                                         <em>
-                                                            <h2 class="text-gray-xl text-right font-sans mt-6 text-gray-300"><br>*click for more information</h2>
+                                                            <h2 class="text-gray-xl text-right font-sans mt-6 text-gray-300"><br>*click to see cases</h2>
                                                         </em>
                                                         </div>
                                                     </div>
@@ -645,21 +645,22 @@
                                     </div>
                                 </div>
 
-                                <!-- Back Face of the Card - Added a placeholder back face -->
-                                <div class="card-face back w-full bg-white/20 p-12 rounded-2xl shadow-xl border-2 border-white/30 hover:border-white transition-colors duration-300">
-                                    <div class="p-4">
-                                        <h2 class="text-4xl font-bold mb-4">The Other Side</h2>
-                                        <p class="text-gray-200 leading-relaxed">
-                                            This is the back of the card. You can add any content here.
-                                        </p>
-                                    </div>
-                                    <div class="flex items-center gap-4 h-24">
-                                    <!-- Sideways "PHL" text -->
-                                        <div class="flex items-center h-full">
-                                            <h3 class="font-bold text-5xl text-white sideways-text">BRN</h3>
+                                <!-- Back Face of the Card -->
+                                <div class="card-face back">
+                                    <!-- All content for the back goes directly inside this div -->
+                                    <div class="flex flex-col md:flex-row gap-4 w-full">
+                                        <!-- Image 1 -->
+                                        <div class="w-full md:w-1/3 flex items-center justify-center">
+                                            <img src="https://lh3.googleusercontent.com/d/1BYll2jlrXztuEGh87dcfYvI3kzWn-jgQ" alt="Placeholder image 1" class="rounded-lg shadow-md">
                                         </div>
-                                    <!-- Flag with height matching the "PHL" text container -->
-                                    <img src="https://lh3.googleusercontent.com/d/1Tqs0bMd00S3aIHz1gCZ_XEI9QxgiK7ho" alt="Brunei Flag" class="rounded-lg h-full max-w-xs">
+                                        <!-- Image 2 -->
+                                        <div class="w-full md:w-1/3 flex items-center justify-center">
+                                            <img src="https://lh3.googleusercontent.com/d/" alt="Placeholder image 2" class="rounded-lg shadow-md">
+                                        </div>
+                                        <!-- Image 3 -->
+                                        <div class="w-full md:w-1/3 flex items-center justify-center">
+                                            <img src="https://lh3.googleusercontent.com/d/" alt="Placeholder image 3" class="rounded-lg shadow-md">
+                                        </div>
                                     </div>
                                 </div>
                             </div>
@@ -667,71 +668,335 @@
                     </div>
                 </section>
 
-                <div class="grid grid-cols-1 sm:grid-cols-3 mt-80 gap-20 max-w-7xl mx-auto">
-                    <div class="bg-white/20 p-8 rounded-2xl shadow-xl text-center border-2 border-white/30 hover:border-white transition-colors duration-300">
-                        <div class="flex items-center gap-4 pb-4">
-                            <!-- Container for "PHL" and flag to ensure they align and have a consistent height -->
-                                <div class="flex items-center gap-4 h-24">
-                                    <!-- Sideways "PHL" text -->
-                                        <div class="flex items-center h-full">
-                                            <h3 class="font-bold text-5xl text-white sideways-text">BRN</h3>
-                                        </div>
-                                    <!-- Flag with height matching the "PHL" text container -->
-                                    <img src="https://lh3.googleusercontent.com/d/1Tqs0bMd00S3aIHz1gCZ_XEI9QxgiK7ho" alt="Brunei Flag" class="rounded-lg h-full max-w-xs">
-                                </div>
-                        </div>
+                <section class="text-white font-['Inter'] flex items-center justify-center min-h-screen p-8">
+                    <!-- Card Grid Container -->
+                    <!-- Reduced gap between cards from 'gap-4' to 'gap-2' for a tighter fit -->
+                    <div id="card-grid" class="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-5 gap-12 mt-12 mx-auto">
+                        <!-- Cards will be inserted here by JavaScript -->
+                    </div>
 
-                            <!-- Second row of the right column: Divided into two sub-columns for Crisis and Climact -->
-                                <div class="flex flex-col md:flex-row w-full gap-8">
-                                <!-- First sub-column for Crises -->
+                    <!-- The Pop-up Modal Container - Initially hidden and will be populated by JavaScript -->
+                    <div id="modal" class="modal fixed inset-0 z-50 bg-black/50 hidden items-center justify-center p-4">
+                        <!-- The Modal Content Box -->
+                        <div class="bg-gray-800 rounded-2xl shadow-2xl border-2 border-white/40 p-8 w-full max-w-4xl relative">
+                            <!-- Close button -->
+                            <button id="close-modal" class="absolute top-4 right-4 text-white text-2xl font-bold hover:text-gray-400 transition-colors">
+                                &times;
+                            </button>
+                            
+                            <!-- Modal content will be dynamically populated here -->
+                            <h2 id="modal-title" class="text-4xl font-bold text-green-400 mb-6 border-b-2 border-green-500 pb-2"></h2>
+                            
+                            <div id="modal-content" class="flex flex-col md:flex-row w-full gap-8">
+                                <!-- Crises and Climact sections will be populated here -->
+                            </div>
+
+                            <div id="modal-images" class="flex flex-col md:flex-row gap-4 w-full mt-8 border-t-2 border-gray-600 pt-8">
+                                <!-- Images will be populated here -->
+                            </div>
+                        </div>
+                    </div>
+
+                    <script>
+                        document.addEventListener('DOMContentLoaded', () => {
+                            // Data for each country card and its modal content
+                            const countriesData = [
+                                {
+                                    code: 'BRN',
+                                    flagUrl: 'https://lh3.googleusercontent.com/d/1Tqs0bMd00S3aIHz1gCZ_XEI9QxgiK7ho',
+                                    crises: [
+                                        { title: 'Flooding', cause: 'Poor Drainage Systems' },
+                                        { title: 'Extreme Heat', cause: 'Greenhouse Gas Emissions' },
+                                        { title: 'Forest Fires', cause: 'El Niño' }
+                                    ],
+                                    climact: [
+                                        'Proper Waste Management',
+                                        'Reduce Carbon Footprint',
+                                        'Sustainable Urban Planning'
+                                    ],
+                                    images: [
+                                        'https://placehold.co/300x200/FFFFFF/000000?text=Brunei+Image+1',
+                                        'https://placehold.co/300x200/FFFFFF/000000?text=Brunei+Image+2',
+                                        'https://placehold.co/300x200/FFFFFF/000000?text=Brunei+Image+3'
+                                    ]
+                                },
+                                {
+                                    code: 'TLS',
+                                    flagUrl: 'https://lh3.googleusercontent.com/d/1cPGa69swkwgJpVLzqzQeWYvvfJPD20ds',
+                                    crises: [
+                                        { title: 'Typhoons', cause: 'Rising Sea Temperatures' },
+                                        { title: 'Sea Level Rise', cause: 'Glacier Melt' },
+                                        { title: 'Landslides', cause: 'Heavy Rainfall & Deforestation' }
+                                    ],
+                                    climact: [
+                                        'Mangrove Reforestation',
+                                        'Disaster Risk Reduction',
+                                        'Renewable Energy Adoption'
+                                    ],
+                                    images: [
+                                        'https://placehold.co/300x200/FFFFFF/000000?text=PHL+Image+1',
+                                        'https://placehold.co/300x200/FFFFFF/000000?text=PHL+Image+2',
+                                        'https://placehold.co/300x200/FFFFFF/000000?text=PHL+Image+3'
+                                    ]
+                                },
+                                {
+                                    code: 'THA',
+                                    flagUrl: 'https://cdn.countryflags.com/thumbs/thailand/flag-400.png',
+                                    crises: [
+                                        { title: 'Drought', cause: 'Water Scarcity' },
+                                        { title: 'Air Pollution', cause: 'Industrial Emissions' },
+                                        { title: 'Coastal Erosion', cause: 'Erosion and Land Subsidence' }
+                                    ],
+                                    climact: [
+                                        'Urban Green Spaces',
+                                        'Water Conservation Programs',
+                                        'Waste-to-Energy Initiatives'
+                                    ],
+                                    images: [
+                                        'https://placehold.co/300x200/FFFFFF/000000?text=THA+Image+1',
+                                        'https://placehold.co/300x200/FFFFFF/000000?text=THA+Image+2',
+                                        'https://placehold.co/300x200/FFFFFF/000000?text=THA+Image+3'
+                                    ]
+                                },
+                                {
+                                    code: 'VNM',
+                                    flagUrl: 'https://cdn.countryflags.com/thumbs/vietnam/flag-400.png',
+                                    crises: [
+                                        { title: 'Saline Intrusion', cause: 'Sea Level Rise' },
+                                        { title: 'Mekong Delta Erosion', cause: 'River Damming' },
+                                        { title: 'Extreme Weather', cause: 'Climate Change' }
+                                    ],
+                                    climact: [
+                                        'Resilient Agriculture',
+                                        'Green Transportation',
+                                        'Coastal Protection'
+                                    ],
+                                    images: [
+                                        'https://placehold.co/300x200/FFFFFF/000000?text=VNM+Image+1',
+                                        'https://placehold.co/300x200/FFFFFF/000000?text=VNM+Image+2',
+                                        'https://placehold.co/300x200/FFFFFF/000000?text=VNM+Image+3'
+                                    ]
+                                },
+                                {
+                                    code: 'IDN',
+                                    flagUrl: 'https://cdn.countryflags.com/thumbs/indonesia/flag-400.png',
+                                    crises: [
+                                        { title: 'Forest Fires', cause: 'Land Clearing' },
+                                        { title: 'Subsidence', cause: 'Groundwater Extraction' },
+                                        { title: 'Biodiversity Loss', cause: 'Habitat Destruction' }
+                                    ],
+                                    climact: [
+                                        'Peatland Restoration',
+                                        'Zero-deforestation',
+                                        'Renewable Energy'
+                                    ],
+                                    images: [
+                                        'https://placehold.co/300x200/FFFFFF/000000?text=IDN+Image+1',
+                                        'https://placehold.co/300x200/FFFFFF/000000?text=IDN+Image+2',
+                                        'https://placehold.co/300x200/FFFFFF/000000?text=IDN+Image+3'
+                                    ]
+                                },
+                                {
+                                    code: 'MYS',
+                                    flagUrl: 'https://cdn.countryflags.com/thumbs/malaysia/flag-400.png',
+                                    crises: [
+                                        { title: 'Haze', cause: 'Transboundary Pollution' },
+                                        { title: 'Flash Floods', cause: 'Urbanization' },
+                                        { title: 'Heat Waves', cause: 'High Humidity' }
+                                    ],
+                                    climact: [
+                                        'Sustainable Forest Management',
+                                        'Green Technology',
+                                        'National Climate Change Plan'
+                                    ],
+                                    images: [
+                                        'https://placehold.co/300x200/FFFFFF/000000?text=MYS+Image+1',
+                                        'https://placehold.co/300x200/FFFFFF/000000?text=MYS+Image+2',
+                                        'https://placehold.co/300x200/FFFFFF/000000?text=MYS+Image+3'
+                                    ]
+                                },
+                                {
+                                    code: 'SGP',
+                                    flagUrl: 'https://cdn.countryflags.com/thumbs/singapore/flag-400.png',
+                                    crises: [
+                                        { title: 'Urban Heat', cause: 'Dense Infrastructure' },
+                                        { title: 'Water Stress', cause: 'Limited Resources' },
+                                        { title: 'Sea Level Rise', cause: 'Coastal Location' }
+                                    ],
+                                    climact: [
+                                        'Water Reclamation',
+                                        'Vertical Farming',
+                                        'Climate-resilient Infrastructure'
+                                    ],
+                                    images: [
+                                        'https://placehold.co/300x200/FFFFFF/000000?text=SGP+Image+1',
+                                        'https://placehold.co/300x200/FFFFFF/000000?text=SGP+Image+2',
+                                        'https://placehold.co/300x200/FFFFFF/000000?text=SGP+Image+3'
+                                    ]
+                                },
+                                {
+                                    code: 'KHM',
+                                    flagUrl: 'https://cdn.countryflags.com/thumbs/cambodia/flag-400.png',
+                                    crises: [
+                                        { title: 'Droughts', cause: 'Irregular Rainfall' },
+                                        { title: 'Floods', cause: 'Monsoons' },
+                                        { title: 'Food Insecurity', cause: 'Damaged Crops' }
+                                    ],
+                                    climact: [
+                                        'Community-based Adaptation',
+                                        'Water Resource Management',
+                                        'Sustainable Agriculture'
+                                    ],
+                                    images: [
+                                        'https://placehold.co/300x200/FFFFFF/000000?text=KHM+Image+1',
+                                        'https://placehold.co/300x200/FFFFFF/000000?text=KHM+Image+2',
+                                        'https://placehold.co/300x200/FFFFFF/000000?text=KHM+Image+3'
+                                    ]
+                                },
+                                {
+                                    code: 'LAO',
+                                    flagUrl: 'https://cdn.countryflags.com/thumbs/laos/flag-400.png',
+                                    crises: [
+                                        { title: 'Land Degradation', cause: 'Slash-and-burn Agriculture' },
+                                        { title: 'Deforestation', cause: 'Illegal Logging' },
+                                        { title: 'Water Contamination', cause: 'Pollution' }
+                                    ],
+                                    climact: [
+                                        'Sustainable Land Use',
+                                        'Forestry Protection',
+                                        'Ecosystem Services'
+                                    ],
+                                    images: [
+                                        'https://placehold.co/300x200/FFFFFF/000000?text=LAO+Image+1',
+                                        'https://placehold.co/300x200/FFFFFF/000000?text=LAO+Image+2',
+                                        'https://placehold.co/300x200/FFFFFF/000000?text=LAO+Image+3'
+                                    ]
+                                },
+                                {
+                                    code: 'MMR',
+                                    flagUrl: 'https://cdn.countryflags.com/thumbs/myanmar/flag-400.png',
+                                    crises: [
+                                        { title: 'Flooding', cause: 'Monsoon Rains' },
+                                        { title: 'Droughts', cause: 'Extreme Weather' },
+                                        { title: 'Saline Intrusion', cause: 'Coastal Erosion' }
+                                    ],
+                                    climact: [
+                                        'Disaster Preparedness',
+                                        'Climate-smart Agriculture',
+                                        'Coastal Resilience'
+                                    ],
+                                    images: [
+                                        'https://placehold.co/300x200/FFFFFF/000000?text=MMR+Image+1',
+                                        'https://placehold.co/300x200/FFFFFF/000000?text=MMR+Image+2',
+                                        'https://placehold.co/300x200/FFFFFF/000000?text=MMR+Image+3'
+                                    ]
+                                }
+                            ];
+
+                            const cardGrid = document.getElementById('card-grid');
+                            const modal = document.getElementById('modal');
+                            const closeModalBtn = document.getElementById('close-modal');
+                            const modalTitle = document.getElementById('modal-title');
+                            const modalContent = document.getElementById('modal-content');
+                            const modalImages = document.getElementById('modal-images');
+
+                            // Function to generate the card HTML from the data
+                            function generateCardHTML(country) {
+                                // Reduced the padding on the card itself from 'p-6' to 'p-4'
+                                return `
+                                    <div class="bg-white/20 p-4 rounded-2xl shadow-xl text-center border-2 border-white/30 hover:border-white transition-colors duration-300 cursor-pointer hover:glow clickable-card" data-country-code="${country.code}">
+                                        <!-- Only the country code and flag remain visible on the card -->
+                                        <div class="flex items-center gap-4 pb-4">
+                                            <!-- Reduced the height of the flag container from 'h-24' to 'h-20' -->
+                                            <div class="flex items-center gap-4 h-20">
+                                                <div class="flex items-center h-full">
+                                                    <h3 class="font-bold text-5xl text-white sideways-text">${country.code}</h3>
+                                                </div>
+                                                <img src="${country.flagUrl}" alt="${country.code} Flag" class="rounded-lg h-full max-w-xs">
+                                            </div>
+                                        </div>
+                                        <h2 class="text-gray-xl font-sans mt-6 text-gray-300">*click for more information</h2>
+                                    </div>
+                                `;
+                            }
+
+                            // Function to populate the modal with content and show it
+                            function populateAndShowModal(countryData) {
+                                // Set the modal title
+                                modalTitle.textContent = `More Information on ${countryData.code}`;
+                                
+                                // Populate the crises and climact sections
+                                const crisesHtml = countryData.crises.map(crisis => `
+                                    <div>
+                                        <h2 class="text-gray-xl font-bold mb-1">${crisis.title}</h2>
+                                        <p class="text-gray-200 leading-relaxed">Cause: <br> ${crisis.cause}</p>
+                                    </div>
+                                `).join('');
+
+                                const climactHtml = countryData.climact.map(action => `
+                                    <div>
+                                        <h2 class="text-gray-xl font-semibold mt-2 mb-2 text-green-100"><br>${action}</h2>
+                                    </div>
+                                `).join('');
+
+                                modalContent.innerHTML = `
                                     <div class="w-full md:w-1/2 text-left space-y-4">
                                         <h3 class="text-2xl font-bold mb-2 text-left text-yellow-500">CRISES</h3>
-                                            <div>
-                                                <h2 class="text-gray-xl font-bold mb-1">Flooding</h2>
-                                                    <p class="text-gray-200 leading-relaxed">Cause: <br> Global Warming</p>
-                                            </div>
-                                            <div>
-                                                <h2 class="text-gray-xl font-bold mb-1">Extreme Heat</h2>
-                                                <p class="text-gray-200 leading-relaxed">Cause: <br> Grenhouse Gas Emissions</p>
-                                            </div>
-                                            <div>
-                                                <h2 class="text-gray-xl font-bold mb-1">Forest Fires</h2>
-                                                <p class="text-gray-200 leading-relaxed">Cause: <br> El Niño</p>
-                                            </div>
+                                        ${crisesHtml}
                                     </div>
-                                <!-- Second sub-column for CLIMACT! -->
                                     <div class="w-full md:w-1/2 text-left">
-                                        <h3 class="text-2xl font-bold mb-2 text-left text-green-400 w-full">CLIMACT!<br></h3>
-                                            <div>
-                                                <h2 class="text-gray-xl font-semibold mt-2 mb-2 text-green-100"><br>Proper Waste Management</h2>
-                                            </div>
-                                            <div>
-                                                <h2 class="text-gray-xl font-semibold mt-6 mb-6 text-green-100"><br>Reduce Carbon Footprint</h2>
-                                            </div>
-                                            <div>
-                                                <h2 class="text-gray-xl font-semibold mt-6 mb-6 text-green-100"><br>Sustainable Urban Planning</h2>
-                                            </div>
-                                            <div>
-                                                <em>
-                                                    <h2 class="text-gray-xl text-right font-sans mt-6 text-gray-300"><br>*click for more information</h2>
-                                                </em>
-                                            </div>
+                                        <h3 class="text-2xl font-bold mb-2 text-left text-green-400 w-full">CLIMACT!</h3>
+                                        ${climactHtml}
                                     </div>
-                            </div>
-                    </div>
-                </div>
-            </div>
+                                `;
 
-            <script>
-                document.addEventListener('DOMContentLoaded', () => {
-                    const card = document.getElementById('flippableCard');
-                    // Toggle the 'is-flipped' class on click
-                    card.addEventListener('click', () => {
-                        card.classList.toggle('is-flipped');
-                    });
-                });
-            </script>
+                                // Populate the images
+                                const imagesHtml = countryData.images.map(imgUrl => `
+                                    <div class="w-full md:w-1/3 flex items-center justify-center">
+                                        <img src="${imgUrl}" alt="Placeholder image for ${countryData.code}" class="rounded-lg shadow-md">
+                                    </div>
+                                `).join('');
+                                modalImages.innerHTML = imagesHtml;
 
+                                // Show the modal
+                                modal.classList.remove('hidden');
+                                modal.classList.add('flex');
+                            }
+
+                            // Loop through the data and generate all cards
+                            countriesData.forEach(country => {
+                                cardGrid.innerHTML += generateCardHTML(country);
+                            });
+
+                            // Add a single click listener to the grid container
+                            cardGrid.addEventListener('click', (event) => {
+                                // Find the closest parent with the 'clickable-card' class
+                                const card = event.target.closest('.clickable-card');
+                                if (card) {
+                                    const countryCode = card.dataset.countryCode;
+                                    const countryData = countriesData.find(c => c.code === countryCode);
+                                    if (countryData) {
+                                        populateAndShowModal(countryData);
+                                    }
+                                }
+                            });
+
+                            // Event listener for the close button
+                            closeModalBtn.addEventListener('click', () => {
+                                modal.classList.remove('flex');
+                                modal.classList.add('hidden');
+                            });
+
+                            // Event listener for clicking on the modal backdrop to close it
+                            modal.addEventListener('click', (event) => {
+                                if (event.target === modal) {
+                                    modal.classList.remove('flex');
+                                    modal.classList.add('hidden');
+                                }
+                            });
+                        });
+                    </script>
+                </section>
         </section>
 
         <!-- Survival & Adaptation Page Section -->
@@ -741,12 +1006,22 @@
 
                         <div class="flex flex-col md:flex-row gap-5 items-stretch">
                             <div>
-                                <h2 class="text-4xl text-left md:text-5xl font-bold mb-6">Survival & Adaptation Strategies</h2>
-                                <p class="text-xl text-left text-gray-200 mb-12 max-w-3xl mx-auto">
-                                    Bridge scientific knowledge with practical, real-world guidance <br>to prepare for and respond to climate-related threats.
+                                <h2 class="text-3xl text-left md:text-4xl text-white font-bold mb-2">Survival & Adaptation Strategies</h2>
+                                <p class="text-xl text-left text-gray-200 mb-6 max-w-3xl mx-auto">
+                                    Bridge scientific knowledge with practical, real-world guidance to prepare for and respond to climate-related threats, alongside
+                                </p>
+                                <div>
+                                    <h2 class="text-5xl text-left font-sans-bold md:text-6xl text-gray-700 font-bold mb-6">KLIMATA RANGERS</h2>
+                                </div>
+                                <p class="text-xl text-left text-gray-200 mb-2 max-w-3xl mx-auto">
+                                    Meet Ranger Kath and Ranger Kian—your guides to building resilience and fighting back against the never-ending climate challenges in Southeast Asia!
+                                    <br><br>The Klimata Rangers are passionate environmental educators whose mission is to empower communities, especially young people, to become proactive heroes in the face of climate change. 
+                                    <br>From building your emergency kit to leading recovery in your neighborhood, the Klimata Rangers spotlight the power of preparation, swift action, and community resilience.
+                                    <br>They tackle climate threats head-on, showing that together, we can protect our families and shape a safer, stronger region. 
+                                    <br>Every lesson is a call to action—because <em>being prepared isn’t just smart, it’s heroic.</em>
                                 </p>
                             </div>
-                            <div class="w-full md:w-4/5">
+                                <div class="w-full md:w-4/5">
                                 <!-- Responsive video container -->
                                 <div class="relative w-full overflow-hidden rounded-lg mb-12" style="padding-top: 56.25%;">
                                     <iframe class="absolute top-0 left-0 w-full h-full"
